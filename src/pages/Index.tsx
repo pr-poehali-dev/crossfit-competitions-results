@@ -126,11 +126,11 @@ export default function Index() {
             <div className="inline-block animate-pulse-glow">
               <Badge className="text-lg px-6 py-2 bg-white/20 hover:bg-white/30 border-white/40">
                 <Icon name="Trophy" size={20} className="mr-2" />
-                CROSSFIT CHAMPIONSHIP 2025
+                VALDAI GAMES KIDS 2025
               </Badge>
             </div>
             <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
-              БИТВА СИЛЬНЕЙШИХ
+              VALDAI GAMES KIDS
             </h1>
             <p className="text-xl md:text-2xl font-medium opacity-90 max-w-2xl mx-auto">
               Следи за результатами в реальном времени
