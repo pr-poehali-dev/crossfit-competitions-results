@@ -118,19 +118,13 @@ export default function Index() {
     .sort((a, b) => b.totalScore - a.totalScore);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
+    <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/86dd6813-c6ff-44a0-b096-65eed9be5cdb.jpeg)' }}>
       <div className="container mx-auto px-4 py-8 space-y-12">
         
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary via-secondary to-primary p-12 text-white animate-fade-in">
+        <section className="relative overflow-hidden rounded-3xl bg-black/40 backdrop-blur-sm p-12 text-white animate-fade-in">
           <div className="relative z-10 text-center space-y-6">
-            <div className="inline-block animate-pulse-glow">
-              <Badge className="text-lg px-6 py-2 bg-white/20 hover:bg-white/30 border-white/40">
-                <Icon name="Trophy" size={20} className="mr-2" />
-                VALDAI GAMES KIDS 2025
-              </Badge>
-            </div>
             <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
-              VALDAI GAMES KIDS
+              НОВОГОДНИЙ БЕСПРЕДЕЛ
             </h1>
             <p className="text-xl md:text-2xl font-medium opacity-90 max-w-2xl mx-auto">
               Следи за результатами в реальном времени
@@ -151,14 +145,10 @@ export default function Index() {
         </section>
 
         <Tabs defaultValue="results" className="space-y-8 animate-fade-in">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 h-14">
+          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 h-14">
             <TabsTrigger value="results" className="text-base font-semibold">
               <Icon name="BarChart3" size={20} className="mr-2" />
               Результаты
-            </TabsTrigger>
-            <TabsTrigger value="participants" className="text-base font-semibold">
-              <Icon name="Users" size={20} className="mr-2" />
-              Участники
             </TabsTrigger>
             <TabsTrigger value="schedule" className="text-base font-semibold">
               <Icon name="Calendar" size={20} className="mr-2" />
@@ -167,7 +157,7 @@ export default function Index() {
           </TabsList>
 
           <TabsContent value="results" className="space-y-6">
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap gap-3 justify-center bg-black/40 backdrop-blur-sm rounded-xl p-4">
               <Button 
                 variant={selectedCategory === 'Девочки 5-6' ? 'default' : 'outline'}
                 onClick={() => setSelectedCategory('Девочки 5-6')}
@@ -207,11 +197,11 @@ export default function Index() {
               </Button>
             </div>
 
-            <Card className="animate-fade-in">
+            <Card className="animate-fade-in bg-black/60 backdrop-blur-md border-white/20">
               <CardContent className="p-0">
                 <div className="overflow-x-auto">
                   <table className="w-full">
-                    <thead className="bg-muted">
+                    <thead className="bg-black/40">
                       <tr>
                         <th className="px-4 py-3 text-left text-xs font-bold uppercase">Место</th>
                         <th className="px-4 py-3 text-left text-xs font-bold uppercase">Участник</th>
@@ -291,45 +281,12 @@ export default function Index() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="participants" className="space-y-6">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {mockParticipants.map((participant, index) => (
-                <Card 
-                  key={participant.id}
-                  className="hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <div className="text-6xl">{participant.avatar}</div>
-                      <div className="flex-1">
-                        <CardTitle className="text-xl mb-2">{participant.name}</CardTitle>
-                        <div className="flex flex-wrap gap-2">
-                          <Badge variant="outline" className="font-semibold">
-                            {participant.category}
-                          </Badge>
-                          <Badge className="bg-secondary">
-                            {participant.team}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="bg-muted rounded-lg p-4">
-                      <div className="text-sm text-muted-foreground mb-1">Текущий счёт</div>
-                      <div className="text-3xl font-bold text-primary">{participant.totalScore}</div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
+
 
           <TabsContent value="schedule" className="space-y-4">
-            <Card className="animate-fade-in">
+            <Card className="animate-fade-in bg-black/60 backdrop-blur-md border-white/20">
               <CardHeader>
-                <CardTitle className="text-2xl flex items-center gap-2">
+                <CardTitle className="text-2xl flex items-center gap-2 text-white">
                   <Icon name="CalendarDays" size={28} />
                   Программа соревнований
                 </CardTitle>
@@ -338,17 +295,17 @@ export default function Index() {
                 {mockSchedule.map((event, index) => (
                   <div 
                     key={event.id}
-                    className="rounded-xl border-2 overflow-hidden animate-slide-in"
+                    className="rounded-xl border-2 border-white/20 overflow-hidden animate-slide-in bg-black/40"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <button
                       onClick={() => setExpandedEvent(expandedEvent === event.id ? null : event.id)}
-                      className="w-full flex items-center gap-6 p-5 hover:bg-muted/50 transition-all duration-300"
+                      className="w-full flex items-center gap-6 p-5 hover:bg-white/10 transition-all duration-300"
                     >
                       <div className="flex-1 flex items-center gap-6">
                         <div>
-                          <h4 className="font-bold text-xl text-left">{event.event}</h4>
-                          <p className="text-sm text-muted-foreground text-left">
+                          <h4 className="font-bold text-xl text-left text-white">{event.event}</h4>
+                          <p className="text-sm text-white/60 text-left">
                             {event.heats.length} заходов
                           </p>
                         </div>
@@ -370,23 +327,23 @@ export default function Index() {
                       <Icon 
                         name={expandedEvent === event.id ? "ChevronUp" : "ChevronDown"} 
                         size={24}
-                        className="text-muted-foreground"
+                        className="text-white/60"
                       />
                     </button>
                     
                     {expandedEvent === event.id && (
-                      <div className="border-t bg-muted/20 p-4 space-y-2">
+                      <div className="border-t border-white/20 bg-white/5 p-4 space-y-2">
                         {event.heats.map((heat, heatIndex) => (
                           <div 
                             key={heatIndex}
-                            className="flex items-center justify-between p-3 bg-background rounded-lg"
+                            className="flex items-center justify-between p-3 bg-black/40 rounded-lg"
                           >
                             <div className="flex items-center gap-4">
                               <div className="text-2xl font-bold text-primary min-w-[60px]">
                                 {heat.time}
                               </div>
-                              <div className="h-10 w-px bg-border"></div>
-                              <Badge variant="outline" className="font-semibold">
+                              <div className="h-10 w-px bg-white/20"></div>
+                              <Badge variant="outline" className="font-semibold border-white/40 text-white">
                                 {heat.category}
                               </Badge>
                             </div>
