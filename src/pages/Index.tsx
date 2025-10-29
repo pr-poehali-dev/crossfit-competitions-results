@@ -21,9 +21,8 @@ interface Participant {
 
 interface ScheduleEvent {
   id: number;
-  time: string;
   event: string;
-  location: string;
+  heats: { time: string; category: string }[];
   status: 'upcoming' | 'live' | 'completed';
 }
 
@@ -43,15 +42,76 @@ const mockParticipants: Participant[] = [
 ];
 
 const mockSchedule: ScheduleEvent[] = [
-  { id: 1, time: '09:00', event: 'WOD 1: Fran', location: 'Площадка A', status: 'completed' },
-  { id: 2, time: '11:00', event: 'WOD 2: Cindy', location: 'Площадка B', status: 'live' },
-  { id: 3, time: '14:00', event: 'WOD 3: Diane', location: 'Площадка A', status: 'upcoming' },
-  { id: 4, time: '16:00', event: 'WOD 4: Helen', location: 'Площадка C', status: 'upcoming' },
-  { id: 5, time: '18:00', event: 'Финал', location: 'Главная арена', status: 'upcoming' },
+  { 
+    id: 1, 
+    event: 'Комплекс 1.1', 
+    heats: [
+      { time: '09:00', category: 'Девочки 5-6' },
+      { time: '09:15', category: 'Мальчики 5-6' },
+      { time: '09:30', category: 'Девочки 7-8' },
+      { time: '09:45', category: 'Мальчики 7-8' },
+      { time: '10:00', category: 'Девочки 9-10' },
+      { time: '10:15', category: 'Мальчики 9-10' },
+    ],
+    status: 'completed' 
+  },
+  { 
+    id: 2, 
+    event: 'Комплекс 1.2', 
+    heats: [
+      { time: '11:00', category: 'Девочки 5-6' },
+      { time: '11:15', category: 'Мальчики 5-6' },
+      { time: '11:30', category: 'Девочки 7-8' },
+      { time: '11:45', category: 'Мальчики 7-8' },
+      { time: '12:00', category: 'Девочки 9-10' },
+      { time: '12:15', category: 'Мальчики 9-10' },
+    ],
+    status: 'live' 
+  },
+  { 
+    id: 3, 
+    event: 'Комплекс 2.1', 
+    heats: [
+      { time: '14:00', category: 'Девочки 5-6' },
+      { time: '14:15', category: 'Мальчики 5-6' },
+      { time: '14:30', category: 'Девочки 7-8' },
+      { time: '14:45', category: 'Мальчики 7-8' },
+      { time: '15:00', category: 'Девочки 9-10' },
+      { time: '15:15', category: 'Мальчики 9-10' },
+    ],
+    status: 'upcoming' 
+  },
+  { 
+    id: 4, 
+    event: 'Комплекс 2.2', 
+    heats: [
+      { time: '16:00', category: 'Девочки 5-6' },
+      { time: '16:15', category: 'Мальчики 5-6' },
+      { time: '16:30', category: 'Девочки 7-8' },
+      { time: '16:45', category: 'Мальчики 7-8' },
+      { time: '17:00', category: 'Девочки 9-10' },
+      { time: '17:15', category: 'Мальчики 9-10' },
+    ],
+    status: 'upcoming' 
+  },
+  { 
+    id: 5, 
+    event: 'Комплекс 3', 
+    heats: [
+      { time: '18:00', category: 'Девочки 5-6' },
+      { time: '18:15', category: 'Мальчики 5-6' },
+      { time: '18:30', category: 'Девочки 7-8' },
+      { time: '18:45', category: 'Мальчики 7-8' },
+      { time: '19:00', category: 'Девочки 9-10' },
+      { time: '19:15', category: 'Мальчики 9-10' },
+    ],
+    status: 'upcoming' 
+  },
 ];
 
 export default function Index() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Девочки 5-6');
+  const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
 
   const filteredParticipants = mockParticipants
     .filter(p => p.category === selectedCategory)
@@ -83,12 +143,7 @@ export default function Index() {
               <div className="h-16 w-px bg-white/30"></div>
               <div className="text-center">
                 <div className="text-5xl font-bold">{mockSchedule.length}</div>
-                <div className="text-sm opacity-80 uppercase tracking-wide">Упражнений</div>
-              </div>
-              <div className="h-16 w-px bg-white/30"></div>
-              <div className="text-center">
-                <div className="text-5xl font-bold animate-pulse">LIVE</div>
-                <div className="text-sm opacity-80 uppercase tracking-wide">Прямой эфир</div>
+                <div className="text-sm opacity-80 uppercase tracking-wide">Комплексов</div>
               </div>
             </div>
           </div>
@@ -263,7 +318,7 @@ export default function Index() {
                   <CardContent>
                     <div className="bg-muted rounded-lg p-4">
                       <div className="text-sm text-muted-foreground mb-1">Текущий счёт</div>
-                      <div className="text-3xl font-bold text-primary">{participant.score}</div>
+                      <div className="text-3xl font-bold text-primary">{participant.totalScore}</div>
                     </div>
                   </CardContent>
                 </Card>
@@ -279,38 +334,66 @@ export default function Index() {
                   Программа соревнований
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3">
                 {mockSchedule.map((event, index) => (
                   <div 
                     key={event.id}
-                    className="flex items-center gap-6 p-5 rounded-xl border-2 hover:shadow-lg transition-all duration-300 animate-slide-in"
+                    className="rounded-xl border-2 overflow-hidden animate-slide-in"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className="text-center min-w-[80px]">
-                      <div className="text-3xl font-bold text-primary">{event.time}</div>
-                    </div>
-                    <div className="h-16 w-px bg-border"></div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-xl mb-1">{event.event}</h4>
-                      <p className="text-muted-foreground flex items-center gap-2">
-                        <Icon name="MapPin" size={16} />
-                        {event.location}
-                      </p>
-                    </div>
-                    <Badge 
-                      className={
-                        event.status === 'live' 
-                          ? 'bg-secondary animate-pulse text-base px-4 py-2' 
-                          : event.status === 'completed'
-                          ? 'bg-muted text-muted-foreground text-base px-4 py-2'
-                          : 'bg-primary text-base px-4 py-2'
-                      }
+                    <button
+                      onClick={() => setExpandedEvent(expandedEvent === event.id ? null : event.id)}
+                      className="w-full flex items-center gap-6 p-5 hover:bg-muted/50 transition-all duration-300"
                     >
-                      {event.status === 'live' && <Icon name="Radio" size={16} className="mr-2" />}
-                      {event.status === 'completed' && <Icon name="Check" size={16} className="mr-2" />}
-                      {event.status === 'upcoming' && <Icon name="Clock" size={16} className="mr-2" />}
-                      {event.status === 'live' ? 'В эфире' : event.status === 'completed' ? 'Завершено' : 'Скоро'}
-                    </Badge>
+                      <div className="flex-1 flex items-center gap-6">
+                        <div>
+                          <h4 className="font-bold text-xl text-left">{event.event}</h4>
+                          <p className="text-sm text-muted-foreground text-left">
+                            {event.heats.length} заходов
+                          </p>
+                        </div>
+                      </div>
+                      <Badge 
+                        className={
+                          event.status === 'live' 
+                            ? 'bg-secondary animate-pulse text-base px-4 py-2' 
+                            : event.status === 'completed'
+                            ? 'bg-muted text-muted-foreground text-base px-4 py-2'
+                            : 'bg-primary text-base px-4 py-2'
+                        }
+                      >
+                        {event.status === 'live' && <Icon name="Radio" size={16} className="mr-2" />}
+                        {event.status === 'completed' && <Icon name="Check" size={16} className="mr-2" />}
+                        {event.status === 'upcoming' && <Icon name="Clock" size={16} className="mr-2" />}
+                        {event.status === 'live' ? 'Идёт' : event.status === 'completed' ? 'Завершено' : 'Скоро'}
+                      </Badge>
+                      <Icon 
+                        name={expandedEvent === event.id ? "ChevronUp" : "ChevronDown"} 
+                        size={24}
+                        className="text-muted-foreground"
+                      />
+                    </button>
+                    
+                    {expandedEvent === event.id && (
+                      <div className="border-t bg-muted/20 p-4 space-y-2">
+                        {event.heats.map((heat, heatIndex) => (
+                          <div 
+                            key={heatIndex}
+                            className="flex items-center justify-between p-3 bg-background rounded-lg"
+                          >
+                            <div className="flex items-center gap-4">
+                              <div className="text-2xl font-bold text-primary min-w-[60px]">
+                                {heat.time}
+                              </div>
+                              <div className="h-10 w-px bg-border"></div>
+                              <Badge variant="outline" className="font-semibold">
+                                {heat.category}
+                              </Badge>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </CardContent>
