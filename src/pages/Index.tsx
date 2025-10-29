@@ -23,12 +23,18 @@ interface ScheduleEvent {
 }
 
 const mockParticipants: Participant[] = [
-  { id: 1, name: 'Алексей Волков', category: 'RX Male', team: 'Титаны', score: 485, avatar: '💪' },
-  { id: 2, name: 'Мария Соколова', category: 'RX Female', team: 'Валькирии', score: 478, avatar: '🔥' },
-  { id: 3, name: 'Дмитрий Новиков', category: 'RX Male', team: 'Спартанцы', score: 472, avatar: '⚡' },
-  { id: 4, name: 'Елена Петрова', category: 'RX Female', team: 'Амазонки', score: 465, avatar: '💎' },
-  { id: 5, name: 'Иван Смирнов', category: 'Scaled Male', team: 'Легион', score: 458, avatar: '🦁' },
-  { id: 6, name: 'Ольга Кузнецова', category: 'Scaled Female', team: 'Феникс', score: 451, avatar: '🌟' },
+  { id: 1, name: 'Алексей Иванов', category: 'Мальчики 5-6', team: 'Титаны', score: 485, avatar: '💪' },
+  { id: 2, name: 'София Петрова', category: 'Девочки 5-6', team: 'Валькирии', score: 478, avatar: '🔥' },
+  { id: 3, name: 'Дмитрий Смирнов', category: 'Мальчики 7-8', team: 'Спартанцы', score: 472, avatar: '⚡' },
+  { id: 4, name: 'Анна Волкова', category: 'Девочки 7-8', team: 'Амазонки', score: 465, avatar: '💎' },
+  { id: 5, name: 'Максим Попов', category: 'Мальчики 9-10', team: 'Легион', score: 458, avatar: '🦁' },
+  { id: 6, name: 'Мария Соколова', category: 'Девочки 9-10', team: 'Феникс', score: 451, avatar: '🌟' },
+  { id: 7, name: 'Артём Козлов', category: 'Мальчики 5-6', team: 'Титаны', score: 445, avatar: '🚀' },
+  { id: 8, name: 'Виктория Новикова', category: 'Девочки 5-6', team: 'Феникс', score: 440, avatar: '⭐' },
+  { id: 9, name: 'Егор Лебедев', category: 'Мальчики 7-8', team: 'Легион', score: 435, avatar: '🏆' },
+  { id: 10, name: 'Полина Морозова', category: 'Девочки 7-8', team: 'Валькирии', score: 430, avatar: '✨' },
+  { id: 11, name: 'Никита Васильев', category: 'Мальчики 9-10', team: 'Спартанцы', score: 425, avatar: '⚔️' },
+  { id: 12, name: 'Елизавета Федорова', category: 'Девочки 9-10', team: 'Амазонки', score: 420, avatar: '🌸' },
 ];
 
 const mockSchedule: ScheduleEvent[] = [
@@ -40,11 +46,11 @@ const mockSchedule: ScheduleEvent[] = [
 ];
 
 export default function Index() {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('Девочки 5-6');
 
-  const filteredParticipants = selectedCategory === 'all' 
-    ? mockParticipants 
-    : mockParticipants.filter(p => p.category === selectedCategory);
+  const filteredParticipants = mockParticipants
+    .filter(p => p.category === selectedCategory)
+    .sort((a, b) => b.score - a.score);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted">
@@ -103,82 +109,102 @@ export default function Index() {
           <TabsContent value="results" className="space-y-6">
             <div className="flex flex-wrap gap-3 justify-center">
               <Button 
-                variant={selectedCategory === 'all' ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory('all')}
+                variant={selectedCategory === 'Девочки 5-6' ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory('Девочки 5-6')}
                 className="font-semibold"
               >
-                Все категории
+                Девочки 5-6
               </Button>
               <Button 
-                variant={selectedCategory === 'RX Male' ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory('RX Male')}
+                variant={selectedCategory === 'Девочки 7-8' ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory('Девочки 7-8')}
               >
-                RX Male
+                Девочки 7-8
               </Button>
               <Button 
-                variant={selectedCategory === 'RX Female' ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory('RX Female')}
+                variant={selectedCategory === 'Девочки 9-10' ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory('Девочки 9-10')}
               >
-                RX Female
+                Девочки 9-10
               </Button>
               <Button 
-                variant={selectedCategory === 'Scaled Male' ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory('Scaled Male')}
+                variant={selectedCategory === 'Мальчики 5-6' ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory('Мальчики 5-6')}
               >
-                Scaled Male
+                Мальчики 5-6
               </Button>
               <Button 
-                variant={selectedCategory === 'Scaled Female' ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory('Scaled Female')}
+                variant={selectedCategory === 'Мальчики 7-8' ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory('Мальчики 7-8')}
               >
-                Scaled Female
+                Мальчики 7-8
+              </Button>
+              <Button 
+                variant={selectedCategory === 'Мальчики 9-10' ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory('Мальчики 9-10')}
+              >
+                Мальчики 9-10
               </Button>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {filteredParticipants.map((participant, index) => (
-                <Card 
-                  key={participant.id} 
-                  className="hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-4">
-                        <div className="text-5xl">{participant.avatar}</div>
-                        <div>
-                          <h3 className="font-bold text-lg">{participant.name}</h3>
-                          <Badge variant="secondary" className="mt-1">
-                            {participant.category}
-                          </Badge>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-extrabold text-primary">
-                          #{index + 1}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-muted-foreground flex items-center gap-2">
-                          <Icon name="Users" size={16} />
-                          Команда
-                        </span>
-                        <span className="font-semibold">{participant.team}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-muted-foreground flex items-center gap-2">
-                          <Icon name="Award" size={16} />
-                          Очки
-                        </span>
-                        <span className="font-bold text-xl text-secondary">{participant.score}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <Card className="animate-fade-in">
+              <CardContent className="p-0">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-muted">
+                      <tr>
+                        <th className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">Место</th>
+                        <th className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">Участник</th>
+                        <th className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">Команда</th>
+                        <th className="px-6 py-4 text-right text-sm font-bold uppercase tracking-wider">Очки</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      {filteredParticipants.map((participant, index) => (
+                        <tr 
+                          key={participant.id}
+                          className="hover:bg-muted/50 transition-colors duration-200"
+                        >
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className={
+                                index === 0 ? 'text-4xl font-extrabold text-primary' :
+                                index === 1 ? 'text-3xl font-bold text-secondary' :
+                                index === 2 ? 'text-2xl font-bold text-accent' :
+                                'text-xl font-semibold text-muted-foreground'
+                              }>
+                                #{index + 1}
+                              </div>
+                              {index < 3 && (
+                                <Icon 
+                                  name={index === 0 ? 'Trophy' : index === 1 ? 'Medal' : 'Award'} 
+                                  size={24}
+                                  className={index === 0 ? 'text-primary' : index === 1 ? 'text-secondary' : 'text-accent'}
+                                />
+                              )}
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className="text-3xl">{participant.avatar}</div>
+                              <div className="font-bold text-lg">{participant.name}</div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <Badge variant="outline" className="font-semibold">
+                              {participant.team}
+                            </Badge>
+                          </td>
+                          <td className="px-6 py-4 text-right">
+                            <span className="text-2xl font-bold text-primary">{participant.score}</span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="participants" className="space-y-6">
