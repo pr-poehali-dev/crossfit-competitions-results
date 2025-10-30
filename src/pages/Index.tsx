@@ -87,23 +87,23 @@ export default function Index() {
     <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/86dd6813-c6ff-44a0-b096-65eed9be5cdb.jpeg)' }}>
       <div className="container mx-auto px-4 py-8 space-y-12">
         
-        <section className="relative overflow-hidden rounded-3xl bg-black/40 backdrop-blur-sm p-12 text-white animate-fade-in">
+        <section className="relative overflow-hidden rounded-3xl bg-black/40 backdrop-blur-sm p-6 md:p-12 text-white animate-fade-in">
           <div className="relative z-10 text-center space-y-6">
-            <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight">
               НОВОГОДНИЙ БЕСПРЕДЕЛ
             </h1>
-            <p className="text-xl md:text-2xl font-medium opacity-90 max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl md:text-2xl font-medium opacity-90 max-w-2xl mx-auto px-4">
               Следи за результатами в реальном времени
             </p>
-            <div className="flex items-center justify-center gap-8 pt-4">
+            <div className="flex items-center justify-center gap-4 sm:gap-8 pt-4">
               <div className="text-center">
-                <div className="text-5xl font-bold">{mockParticipants.length}</div>
-                <div className="text-sm opacity-80 uppercase tracking-wide">Участников</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold">{mockParticipants.length}</div>
+                <div className="text-xs sm:text-sm opacity-80 uppercase tracking-wide">Участников</div>
               </div>
-              <div className="h-16 w-px bg-white/30"></div>
+              <div className="h-12 sm:h-16 w-px bg-white/30"></div>
               <div className="text-center">
-                <div className="text-5xl font-bold">{mockSchedule.length}</div>
-                <div className="text-sm opacity-80 uppercase tracking-wide">Комплексов</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold">{mockSchedule.length}</div>
+                <div className="text-xs sm:text-sm opacity-80 uppercase tracking-wide">Комплексов</div>
               </div>
             </div>
           </div>
@@ -112,16 +112,16 @@ export default function Index() {
 
         <Tabs defaultValue="results" className="space-y-8 animate-fade-in">
           <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 h-14">
-            <TabsTrigger value="results" className="text-base font-semibold">
-              <Icon name="BarChart3" size={20} className="mr-2" />
+            <TabsTrigger value="results" className="text-sm sm:text-base font-semibold">
+              <Icon name="BarChart3" size={18} className="mr-1 sm:mr-2" />
               Результаты
             </TabsTrigger>
-            <TabsTrigger value="schedule" className="text-base font-semibold">
-              <Icon name="Calendar" size={20} className="mr-2" />
+            <TabsTrigger value="schedule" className="text-sm sm:text-base font-semibold">
+              <Icon name="Calendar" size={18} className="mr-1 sm:mr-2" />
               Расписание
             </TabsTrigger>
-            <TabsTrigger value="workouts" className="text-base font-semibold">
-              <Icon name="Dumbbell" size={20} className="mr-2" />
+            <TabsTrigger value="workouts" className="text-sm sm:text-base font-semibold">
+              <Icon name="Dumbbell" size={18} className="mr-1 sm:mr-2" />
               Комплексы
             </TabsTrigger>
           </TabsList>
