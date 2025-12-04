@@ -12,8 +12,7 @@ interface Participant {
   avatar: string;
   wod1_1: { result: string; points: number };
   wod1_2: { result: string; points: number };
-  wod2_1: { result: string; points: number };
-  wod2_2: { result: string; points: number };
+  wod2: { result: string; points: number };
   wod3: { result: string; points: number };
   final: { place: number; points: number };
   totalScore: number;
@@ -27,19 +26,39 @@ interface ScheduleEvent {
 }
 
 const mockParticipants: Participant[] = [
-  { id: 1, name: 'Арматурные Феи', category: 'Новички МЖ', avatar: '🔥', wod1_1: { result: '8:44:00', points: 100 }, wod1_2: { result: '6:18:00', points: 90 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 190 },
-  { id: 2, name: 'BARсучки', category: 'Новички МЖ', avatar: '🍻', wod1_1: { result: '8:54:00', points: 95 }, wod1_2: { result: '7:24:00', points: 75 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 170 },
-  { id: 3, name: 'Любим печеньки', category: 'Новички МЖ', avatar: '🍪', wod1_1: { result: '9:22:00', points: 85 }, wod1_2: { result: '7:01:00', points: 85 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 3, points: 0 }, totalScore: 170 },
-  { id: 4, name: 'Girl Power', category: 'Новички МЖ', avatar: '💪', wod1_1: { result: '9:19:00', points: 90 }, wod1_2: { result: '7:31:00', points: 70 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 4, points: 0 }, totalScore: 160 },
-  { id: 5, name: 'Тирамисучки', category: 'Новички МЖ', avatar: '🍰', wod1_1: { result: '10:01:00', points: 55 }, wod1_2: { result: '5:39:00', points: 100 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 5, points: 0 }, totalScore: 155 },
-  { id: 6, name: 'SKAzka', category: 'Новички МЖ', avatar: '⭐', wod1_1: { result: '9:59:00', points: 60 }, wod1_2: { result: '6:07:00', points: 95 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 6, points: 0 }, totalScore: 155 },
-  { id: 7, name: 'Двое из ларца', category: 'Новички МЖ', avatar: '🎭', wod1_1: { result: '9:38:00', points: 80 }, wod1_2: { result: '8:02:00', points: 65 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 7, points: 0 }, totalScore: 145 },
-  { id: 8, name: 'БандаДам', category: 'Новички МЖ', avatar: '👑', wod1_1: { result: '9:42:00', points: 65 }, wod1_2: { result: '7:21:00', points: 80 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 145 },
-  { id: 9, name: 'The best', category: 'Новички МЖ', avatar: '🏆', wod1_1: { result: '9:38:00', points: 80 }, wod1_2: { result: '8:44:00', points: 50 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 130 },
-  { id: 10, name: 'ХВАТТЯГИ', category: 'Новички МЖ', avatar: '💥', wod1_1: { result: '9:41:00', points: 70 }, wod1_2: { result: '8:03:00', points: 60 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 130 },
-  { id: 11, name: 'Условно в форме', category: 'Новички МЖ', avatar: '🤸', wod1_1: { result: '10:20:00', points: 40 }, wod1_2: { result: '8:22:00', points: 55 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 95 },
-  { id: 12, name: 'Одуванчики', category: 'Новички МЖ', avatar: '🌼', wod1_1: { result: '10:03:00', points: 50 }, wod1_2: { result: '9:03:00', points: 45 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 95 },
-  { id: 13, name: 'Вишенки', category: 'Новички МЖ', avatar: '🍒', wod1_1: { result: '10:13:00', points: 45 }, wod1_2: { result: '9:12:00', points: 40 }, wod2_1: { result: '-', points: 0 }, wod2_2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 13, points: 0 }, totalScore: 85 },
+  // Команды Про
+  { id: 1, name: 'ПроМёд', category: 'Команды Про', avatar: '🍯', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
+  { id: 2, name: 'Force of two', category: 'Команды Про', avatar: '⚡', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
+  { id: 3, name: 'Ёлочный ЕМОМ', category: 'Команды Про', avatar: '🎄', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 3, points: 0 }, totalScore: 0 },
+  { id: 4, name: 'Белые и красивые', category: 'Команды Про', avatar: '❄️', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 4, points: 0 }, totalScore: 0 },
+  { id: 5, name: 'Любят адреналин, но возможно напиток', category: 'Команды Про', avatar: '🥤', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 5, points: 0 }, totalScore: 0 },
+  { id: 6, name: 'Стар и млад', category: 'Команды Про', avatar: '👴', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 6, points: 0 }, totalScore: 0 },
+  { id: 7, name: 'Белоснежка +1', category: 'Команды Про', avatar: '👸', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 7, points: 0 }, totalScore: 0 },
+  { id: 8, name: 'Маша и медведь', category: 'Команды Про', avatar: '🐻', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 0 },
+  { id: 9, name: 'Кошки-мышки', category: 'Команды Про', avatar: '🐱', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 0 },
+  { id: 10, name: 'Битой по зубам', category: 'Команды Про', avatar: '🏏', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
+  { id: 11, name: 'Суперы (ударение на У)', category: 'Команды Про', avatar: '🦸', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
+  { id: 12, name: 'ХМЕЛИСУМЕЛИ', category: 'Команды Про', avatar: '🍺', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
+  
+  // Новички МЖ+
+  { id: 13, name: 'Семейные', category: 'Новички МЖ+', avatar: '👨‍👩‍👧', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
+  { id: 14, name: 'Лило и Стич', category: 'Новички МЖ+', avatar: '🌺', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
+  { id: 15, name: 'Steel&fire', category: 'Новички МЖ+', avatar: '🔥', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 3, points: 0 }, totalScore: 0 },
+  { id: 16, name: 'Одуванчики', category: 'Новички МЖ+', avatar: '🌼', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 4, points: 0 }, totalScore: 0 },
+  { id: 17, name: 'Елки ИГО голки', category: 'Новички МЖ+', avatar: '🎄', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 5, points: 0 }, totalScore: 0 },
+  { id: 18, name: 'Елочные гладиаторы', category: 'Новички МЖ+', avatar: '⚔️', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 6, points: 0 }, totalScore: 0 },
+  { id: 19, name: 'НЕЛИШНИЕ КИЛОГРАММЫ', category: 'Новички МЖ+', avatar: '⚖️', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 7, points: 0 }, totalScore: 0 },
+  { id: 20, name: 'Все еще новички', category: 'Новички МЖ+', avatar: '🆕', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 0 },
+  { id: 21, name: 'НикОля', category: 'Новички МЖ+', avatar: '🎅', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 0 },
+  { id: 22, name: 'Hoops&Wilde', category: 'Новички МЖ+', avatar: '🏀', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
+  { id: 23, name: 'Можем хуже', category: 'Новички МЖ+', avatar: '🤷', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
+  { id: 24, name: 'Однофамильцы', category: 'Новички МЖ+', avatar: '👥', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
+  { id: 25, name: 'Ватутины', category: 'Новички МЖ+', avatar: '🎯', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 13, points: 0 }, totalScore: 0 },
+  { id: 26, name: 'Внуки Деда Мороза', category: 'Новички МЖ+', avatar: '🎅', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 14, points: 0 }, totalScore: 0 },
+  { id: 27, name: 'Мутный Енот', category: 'Новички МЖ+', avatar: '🦝', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 15, points: 0 }, totalScore: 0 },
+  { id: 28, name: 'Ух ты пухты', category: 'Новички МЖ+', avatar: '🎉', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 16, points: 0 }, totalScore: 0 },
+  { id: 29, name: 'Устимов', category: 'Новички МЖ+', avatar: '🌟', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 17, points: 0 }, totalScore: 0 },
+  { id: 30, name: 'Пухлые утки', category: 'Новички МЖ+', avatar: '🦆', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 18, points: 0 }, totalScore: 0 },
 ];
 
 const mockSchedule: ScheduleEvent[] = [
@@ -159,8 +178,7 @@ export default function Index() {
                         <th className="px-4 py-3 text-left text-xs font-bold uppercase">Участник</th>
                         <th className="px-4 py-3 text-center text-xs font-bold uppercase">1.1</th>
                         <th className="px-4 py-3 text-center text-xs font-bold uppercase">1.2</th>
-                        <th className="px-4 py-3 text-center text-xs font-bold uppercase">2.1</th>
-                        <th className="px-4 py-3 text-center text-xs font-bold uppercase">2.2</th>
+                        <th className="px-4 py-3 text-center text-xs font-bold uppercase">2</th>
                         <th className="px-4 py-3 text-center text-xs font-bold uppercase">3</th>
                         <th className="px-4 py-3 text-center text-xs font-bold uppercase">Финал</th>
                         <th className="px-4 py-3 text-right text-xs font-bold uppercase">Итого</th>
@@ -194,7 +212,7 @@ export default function Index() {
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-2">
                               <div className="text-2xl">{participant.avatar}</div>
-                              <div className="font-bold text-base">{participant.name}</div>
+                              <div className="font-bold text-base text-white">{participant.name}</div>
                             </div>
                           </td>
                           <td className="px-4 py-3 text-center">
@@ -206,12 +224,8 @@ export default function Index() {
                             <div className="text-xs text-muted-foreground">({participant.wod1_2.points})</div>
                           </td>
                           <td className="px-4 py-3 text-center">
-                            <div className="font-semibold">{participant.wod2_1.result}</div>
-                            <div className="text-xs text-muted-foreground">({participant.wod2_1.points})</div>
-                          </td>
-                          <td className="px-4 py-3 text-center">
-                            <div className="font-semibold">{participant.wod2_2.result}</div>
-                            <div className="text-xs text-muted-foreground">({participant.wod2_2.points})</div>
+                            <div className="font-semibold">{participant.wod2.result}</div>
+                            <div className="text-xs text-muted-foreground">({participant.wod2.points})</div>
                           </td>
                           <td className="px-4 py-3 text-center">
                             <div className="font-semibold">{participant.wod3.result}</div>
