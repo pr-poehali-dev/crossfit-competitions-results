@@ -203,10 +203,10 @@ export default function Index() {
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-2">
                               <div className={
-                                index === 0 ? 'text-2xl font-extrabold text-primary' :
-                                index === 1 ? 'text-xl font-bold text-secondary' :
-                                index === 2 ? 'text-lg font-bold text-accent' :
-                                'text-lg font-semibold text-muted-foreground'
+                                index === 0 ? 'text-2xl font-extrabold text-yellow-400' :
+                                index === 1 ? 'text-xl font-bold text-gray-300' :
+                                index === 2 ? 'text-lg font-bold text-orange-400' :
+                                'text-lg font-semibold text-white'
                               }>
                                 #{index + 1}
                               </div>
@@ -214,7 +214,7 @@ export default function Index() {
                                 <Icon 
                                   name={index === 0 ? 'Trophy' : index === 1 ? 'Medal' : 'Award'} 
                                   size={20}
-                                  className={index === 0 ? 'text-primary' : index === 1 ? 'text-secondary' : 'text-accent'}
+                                  className={index === 0 ? 'text-yellow-400' : index === 1 ? 'text-gray-300' : 'text-orange-400'}
                                 />
                               )}
                             </div>
@@ -276,7 +276,7 @@ export default function Index() {
               <CardHeader>
                 <CardTitle className="text-2xl flex items-center gap-2 text-white">
                   <Icon name="CalendarDays" size={28} />
-                  Программа соревнований
+                  Расписание заходов
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -355,60 +355,127 @@ export default function Index() {
               </CardHeader>
               <CardContent className="space-y-6">
                 
-                <div className="space-y-4">
-                  <div className="bg-black/40 rounded-xl p-6 border-2 border-white/20">
-                    <h3 className="text-xl font-bold text-white mb-4">Новички МЖ / Новички МЖ+</h3>
-                    
-                    <div className="space-y-4">
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <h4 className="text-lg font-semibold text-primary mb-2">Комплекс 1</h4>
-                        <p className="text-white/90 mb-2">3 круга:</p>
-                        <ul className="list-disc list-inside text-white/80 space-y-1 ml-2">
-                          <li>15 приседаний</li>
-                          <li>10 отжиманий</li>
-                          <li>5 подтягиваний</li>
-                        </ul>
+                {/* НОВИЧКИ МЖ */}
+                <div className="bg-black/40 rounded-xl p-6 border-2 border-yellow-400/40">
+                  <h3 className="text-2xl font-bold text-yellow-400 mb-6 flex items-center gap-2">
+                    <Icon name="Flame" size={28} />
+                    НОВИЧКИ МЖ
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
+                      <h4 className="text-xl font-bold text-primary mb-3">🏋️ Комплекс 1</h4>
+                      <p className="text-white/90 font-semibold mb-2">ЕМОМ 10 минут (смена атлетов происходит каждую минуту)</p>
+                      <div className="space-y-2 text-white/80">
+                        <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 3 берпи.</p>
+                        <p>Дальше до конца минуты набирает повторения связки: 12 становых с гирей + 9 фронтальных приседаний с гирей + 6 маха гири (М 12/Ж 8 кг)</p>
+                        <p className="font-medium">2-ая минута: А2 - набирает калории на гребле || А1 - в начале делает 3 берпи.</p>
+                        <p>Дальше до конца минуты набирает повторения связки: 12 становых с гирей + 9 фронтальных приседаний с гирей + 6 маха гири (М 12/Ж 8 кг)</p>
+                        <p className="text-yellow-400 font-semibold mt-3">2 зачета: калорий + повторения</p>
                       </div>
+                    </div>
 
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <h4 className="text-lg font-semibold text-primary mb-2">Комплекс 2</h4>
-                        <ul className="list-disc list-inside text-white/80 space-y-1 ml-2">
-                          <li>100 синхронных выпадов</li>
-                          <li>200 берпи на двоих</li>
-                        </ul>
-                      </div>
+                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
+                      <h4 className="text-xl font-bold text-primary mb-3">💪 Комплекс 2</h4>
+                      <p className="text-white/90 font-semibold mb-2">8 минут (все делится на двоих) - набрать как можно больше повторений.</p>
+                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                        <li>16 перешагиваний бокса с 1-ой гантелью (15/7) (М 60/Ж 50)</li>
+                        <li>16 швунгов гантели</li>
+                        <li>4 тележки</li>
+                      </ul>
+                      <p className="text-white/90 font-semibold mt-3 mb-2">Отдых 1 минута</p>
+                      <p className="text-white/90 font-semibold mb-2">4 минуты (все выполняется синхронно) - набрать как можно больше повторений</p>
+                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                        <li>12 перепрыгиваний гантели</li>
+                        <li>8 ситапов с медболом (каждый делает 8, вес медбола 4 кг)</li>
+                        <li>4 рывок + трастер</li>
+                      </ul>
+                    </div>
 
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <h4 className="text-lg font-semibold text-primary mb-2">Комплекс 3</h4>
-                        <p className="text-white/90 mb-2">4 круга:</p>
-                        <ul className="list-disc list-inside text-white/80 space-y-1 ml-2">
-                          <li>20 калорий гребля</li>
-                          <li>20 становых (100/80 кг)</li>
+                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
+                      <h4 className="text-xl font-bold text-primary mb-3">🔥 Комплекс 3</h4>
+                      <p className="text-white/90 font-semibold mb-2">Крышка 9 минут</p>
+                      <p className="text-yellow-400 font-bold mb-2">⚡100 ОП</p>
+                      <div className="space-y-2 text-white/80">
+                        <p className="font-semibold">🔵 3 круга</p>
+                        <ul className="list-disc list-inside ml-4 space-y-1">
+                          <li>12 бросков мяча (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
+                          <li>6 перелезаний друг за другом (стена 100 см) на двоих</li>
                         </ul>
+                        <p className="font-semibold mt-2">🔵 2 круга</p>
+                        <ul className="list-disc list-inside ml-4 space-y-1">
+                          <li>15 бросков мяча (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
+                          <li>8 перелезаний на двоих</li>
+                        </ul>
+                        <p className="font-semibold mt-2">🔵 1 круг</p>
+                        <ul className="list-disc list-inside ml-4 space-y-1">
+                          <li>18 бросков (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
+                          <li>10 перелезаний на двоих</li>
+                        </ul>
+                        <p className="text-yellow-400 font-bold mt-2">⚡100 ОП конец</p>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div className="bg-black/40 rounded-xl p-6 border-2 border-white/20">
-                    <h3 className="text-xl font-bold text-white mb-4">Команды Про</h3>
-                    
-                    <div className="space-y-4">
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <h4 className="text-lg font-semibold text-primary mb-2">Комплекс 1</h4>
-                        <ul className="list-disc list-inside text-white/80 space-y-1 ml-2">
-                          <li>А1</li>
-                          <li>А2 + А3: 10 кувырков и максимум баллов в дартс</li>
+                {/* НОВИЧКИ МЖ+ */}
+                <div className="bg-black/40 rounded-xl p-6 border-2 border-blue-400/40">
+                  <h3 className="text-2xl font-bold text-blue-400 mb-6 flex items-center gap-2">
+                    <Icon name="Zap" size={28} />
+                    НОВИЧКИ МЖ+
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
+                      <h4 className="text-xl font-bold text-primary mb-3">🏋️ Комплекс 1</h4>
+                      <p className="text-white/90 font-semibold mb-2">ЕМОМ 10 минут (смена атлетов происходит каждую минуту)</p>
+                      <div className="space-y-2 text-white/80">
+                        <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 5 берпи.</p>
+                        <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
+                        <p className="font-medium">2-ая минута: А2 - набирает калории на гребле || А1 - в начале делает 3 берпи.</p>
+                        <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
+                        <p className="text-blue-400 font-semibold mt-3">2 зачета: калорий + повторения</p>
+                      </div>
+                    </div>
+
+                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
+                      <h4 className="text-xl font-bold text-primary mb-3">💪 Комплекс 2</h4>
+                      <p className="text-white/90 font-semibold mb-2">8 минут (все делится на двоих) - набрать как можно больше повторений.</p>
+                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                        <li>16 перешагиваний бокса с 1-ой гантелью (15/10) (М 60/Ж 50)</li>
+                        <li>16 швунгов гантели</li>
+                        <li>4 тележки</li>
+                      </ul>
+                      <p className="text-white/90 font-semibold mt-3 mb-2">Отдых 1 минута</p>
+                      <p className="text-white/90 font-semibold mb-2">4 минуты (все выполняется синхронно) - набрать как можно больше повторений</p>
+                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                        <li>12 перепрыгиваний гантели</li>
+                        <li>8 ситапов с медболом (каждый делает 8, вес медбола 6 кг)</li>
+                        <li>4 рывок + трастер</li>
+                      </ul>
+                    </div>
+
+                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
+                      <h4 className="text-xl font-bold text-primary mb-3">🔥 Комплекс 3</h4>
+                      <p className="text-white/90 font-semibold mb-2">Крышка 9 минут</p>
+                      <p className="text-blue-400 font-bold mb-2">⚡100 ОП</p>
+                      <div className="space-y-2 text-white/80">
+                        <p className="font-semibold">🔵 3 круга</p>
+                        <ul className="list-disc list-inside ml-4 space-y-1">
+                          <li>12 бросков мяча (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
+                          <li>6 перелезаний друг за другом (стена 100 см) на двоих</li>
                         </ul>
-                      </div>
-
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <h4 className="text-lg font-semibold text-primary mb-2">Комплекс 2</h4>
-                        <p className="text-white/80">))))</p>
-                      </div>
-
-                      <div className="bg-white/5 rounded-lg p-4">
-                        <h4 className="text-lg font-semibold text-primary mb-2">Комплекс 3</h4>
-                        <p className="text-white/80">___</p>
+                        <p className="font-semibold mt-2">🔵 2 круга</p>
+                        <ul className="list-disc list-inside ml-4 space-y-1">
+                          <li>15 бросков мяча (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
+                          <li>8 перелезаний на двоих</li>
+                        </ul>
+                        <p className="font-semibold mt-2">🔵 1 круг</p>
+                        <ul className="list-disc list-inside ml-4 space-y-1">
+                          <li>18 бросков (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
+                          <li>10 перелезаний на двоих</li>
+                        </ul>
+                        <p className="text-blue-400 font-bold mt-2">⚡100 ОП конец</p>
                       </div>
                     </div>
                   </div>
