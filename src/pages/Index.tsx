@@ -22,12 +22,7 @@ interface Participant {
   totalScore: number;
 }
 
-interface ScheduleEvent {
-  id: number;
-  event: string;
-  heats: { time: string; category: string }[];
-  status: 'upcoming' | 'live' | 'completed';
-}
+
 
 const mockParticipants: Participant[] = [
   // Команды Про
@@ -69,34 +64,105 @@ const mockParticipants: Participant[] = [
   { id: 32, name: 'Пухлые утки', category: 'Новички МЖ+', avatar: '🦆', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 18, points: 0 }, totalScore: 0 },
 ];
 
-const mockSchedule: ScheduleEvent[] = [
+interface HeatWithTeams {
+  time: string;
+  category: string;
+  teams: string[];
+}
+
+interface ScheduleEventWithTeams {
+  id: number;
+  event: string;
+  heats: HeatWithTeams[];
+  status: 'upcoming' | 'live' | 'completed';
+}
+
+const mockSchedule: ScheduleEventWithTeams[] = [
   { 
     id: 1, 
-    event: 'Комплекс 1', 
+    event: 'Комплекс 1 - Запрягаем греблю!', 
     heats: [
-      { time: '09:00', category: 'Новички МЖ' },
-      { time: '09:30', category: 'Новички МЖ+' },
-      { time: '10:00', category: 'Команды Про' },
+      { 
+        time: '09:45', 
+        category: 'Заход 1',
+        teams: ['Команда 1 (Команды Про)', 'Команда 2 (Команды Про)']
+      },
+      { 
+        time: '10:05', 
+        category: 'Заход 2',
+        teams: [
+          'Любят адреналин, но возможно напиток',
+          'Белоснежка +1',
+          'Маша и медведь',
+          'Семейные',
+          'Лило и Стич',
+          'Steel&fire'
+        ]
+      },
+      { 
+        time: '10:18', 
+        category: 'Заход 3',
+        teams: [
+          'ПроМёд',
+          'Force of two',
+          'ХМЕЛИСУМЕЛИ',
+          'Одуванчики',
+          'Елки ИГО голки',
+          'Елочные гладиаторы'
+        ]
+      },
+      { 
+        time: '10:30', 
+        category: 'Заход 4',
+        teams: [
+          'Кошки-мышки',
+          'Битой по зубам',
+          'НЕЛИШНИЕ КИЛОГРАММЫ',
+          'Все еще новички',
+          'НикОля',
+          'Hoops&Wilde'
+        ]
+      },
+      { 
+        time: '10:43', 
+        category: 'Заход 5',
+        teams: [
+          'Ёлочный ЕМОМ',
+          'Белые и красивые',
+          'Можем хуже',
+          'Однофамильцы',
+          'Ватутины',
+          'Внуки Деда Мороза'
+        ]
+      },
+      { 
+        time: '10:55', 
+        category: 'Заход 6',
+        teams: [
+          'Суперы (ударение на У)',
+          'Стар и млад',
+          'Мутный Енот',
+          'Ух ты пухты',
+          'Устимов',
+          'Пухлые утки'
+        ]
+      },
     ],
     status: 'completed' 
   },
   { 
     id: 2, 
-    event: 'Комплекс 2', 
+    event: 'Комплекс 2 - Операция «Двойной Удар»', 
     heats: [
-      { time: '12:00', category: 'Новички МЖ' },
-      { time: '12:30', category: 'Новички МЖ+' },
-      { time: '13:00', category: 'Команды Про' },
+      { time: '12:00', category: 'Все команды', teams: [] },
     ],
     status: 'live' 
   },
   { 
     id: 3, 
-    event: 'Комплекс 3', 
+    event: 'Комплекс 3 - Подарок Империи', 
     heats: [
-      { time: '15:00', category: 'Новички МЖ' },
-      { time: '15:30', category: 'Новички МЖ+' },
-      { time: '16:00', category: 'Команды Про' },
+      { time: '15:00', category: 'Все команды', teams: [] },
     ],
     status: 'upcoming' 
   },
@@ -337,11 +403,11 @@ export default function Index() {
                     </button>
                     
                     {expandedEvent === event.id && (
-                      <div className="border-t border-white/20 bg-white/5 p-4 space-y-2">
+                      <div className="border-t border-white/20 bg-white/5 p-4 space-y-3">
                         {event.heats.map((heat, heatIndex) => (
                           <div 
                             key={heatIndex}
-                            className="flex items-center justify-between p-3 bg-black/40 rounded-lg"
+                            className="bg-black/40 rounded-lg p-4 space-y-3"
                           >
                             <div className="flex items-center gap-4">
                               <div className="text-2xl font-bold text-primary min-w-[60px]">
@@ -352,6 +418,18 @@ export default function Index() {
                                 {heat.category}
                               </Badge>
                             </div>
+                            {heat.teams.length > 0 && (
+                              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 ml-0 sm:ml-20">
+                                {heat.teams.map((team, teamIndex) => (
+                                  <div 
+                                    key={teamIndex}
+                                    className="text-sm text-white/80 bg-white/5 px-3 py-2 rounded border border-white/10"
+                                  >
+                                    {team}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
