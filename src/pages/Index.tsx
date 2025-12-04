@@ -105,6 +105,7 @@ const mockSchedule: ScheduleEvent[] = [
 export default function Index() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Новички МЖ');
   const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
+  const [expandedWorkout, setExpandedWorkout] = useState<number | null>(null);
 
   const filteredParticipants = mockParticipants
     .filter(p => p.category === selectedCategory)
@@ -379,57 +380,120 @@ export default function Index() {
                   </h3>
                   
                   <div className="space-y-4">
-                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
-                      <h4 className="text-xl font-bold text-primary mb-3">🏋️ Комплекс 1</h4>
-                      <p className="text-white/90 font-semibold mb-2">ЕМОМ 10 минут (смена атлетов происходит каждую минуту)</p>
-                      <div className="space-y-2 text-white/80">
-                        <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 3 берпи.</p>
-                        <p>Дальше до конца минуты набирает повторения связки: 12 становых с гирей + 9 фронтальных приседаний с гирей + 6 маха гири (М 12/Ж 8 кг)</p>
-                        <p className="font-medium">2-ая минута: А2 - набирает калории на гребле || А1 - в начале делает 3 берпи.</p>
-                        <p>Дальше до конца минуты набирает повторения связки: 12 становых с гирей + 9 фронтальных приседаний с гирей + 6 маха гири (М 12/Ж 8 кг)</p>
-                        <p className="text-yellow-400 font-semibold mt-3">2 зачета: калорий + повторения</p>
-                      </div>
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 1 ? null : 1)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">🏋️</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 1</h4>
+                            <p className="text-sm text-white/60">Запрягаем греблю!</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 1 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 1 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-white/90 font-semibold mb-2">ЕМОМ 10 минут (смена атлетов происходит каждую минуту)</p>
+                          <div className="space-y-2 text-white/80">
+                            <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 3 берпи.</p>
+                            <p>Дальше до конца минуты набирает повторения связки: 12 становых с гирей + 9 фронтальных приседаний с гирей + 6 маха гири (М 12/Ж 8 кг)</p>
+                            <p className="font-medium">2-ая минута: А2 - набирает калории на гребле || А1 - в начале делает 3 берпи.</p>
+                            <p>Дальше до конца минуты набирает повторения связки: 12 становых с гирей + 9 фронтальных приседаний с гирей + 6 маха гири (М 12/Ж 8 кг)</p>
+                            <p className="text-yellow-400 font-semibold mt-3">2 зачета: калорий + повторения</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
-                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
-                      <h4 className="text-xl font-bold text-primary mb-3">💪 Комплекс 2</h4>
-                      <p className="text-white/90 font-semibold mb-2">8 минут (все делится на двоих) - набрать как можно больше повторений.</p>
-                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
-                        <li>16 перешагиваний бокса с 1-ой гантелью (15/7) (М 60/Ж 50)</li>
-                        <li>16 швунгов гантели</li>
-                        <li>4 тележки</li>
-                      </ul>
-                      <p className="text-white/90 font-semibold mt-3 mb-2">Отдых 1 минута</p>
-                      <p className="text-white/90 font-semibold mb-2">4 минуты (все выполняется синхронно) - набрать как можно больше повторений</p>
-                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
-                        <li>12 перепрыгиваний гантели</li>
-                        <li>8 ситапов с медболом (каждый делает 8, вес медбола 4 кг)</li>
-                        <li>4 рывок + трастер</li>
-                      </ul>
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 2 ? null : 2)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">💪</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 2</h4>
+                            <p className="text-sm text-white/60">Операция «Двойной Удар»</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 2 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 2 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-white/90 font-semibold mb-2">8 минут (все делится на двоих) - набрать как можно больше повторений.</p>
+                          <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                            <li>16 перешагиваний бокса с 1-ой гантелью (15/7) (М 60/Ж 50)</li>
+                            <li>16 швунгов гантели</li>
+                            <li>4 тележки</li>
+                          </ul>
+                          <p className="text-white/90 font-semibold mt-3 mb-2">Отдых 1 минута</p>
+                          <p className="text-white/90 font-semibold mb-2">4 минуты (все выполняется синхронно) - набрать как можно больше повторений</p>
+                          <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                            <li>12 перепрыгиваний гантели</li>
+                            <li>8 ситапов с медболом (каждый делает 8, вес медбола 4 кг)</li>
+                            <li>4 рывок + трастер</li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
 
-                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
-                      <h4 className="text-xl font-bold text-primary mb-3">🔥 Комплекс 3</h4>
-                      <p className="text-white/90 font-semibold mb-2">Крышка 9 минут</p>
-                      <p className="text-yellow-400 font-bold mb-2">⚡100 ОП</p>
-                      <div className="space-y-2 text-white/80">
-                        <p className="font-semibold">🔵 3 круга</p>
-                        <ul className="list-disc list-inside ml-4 space-y-1">
-                          <li>12 бросков мяча (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
-                          <li>6 перелезаний друг за другом (стена 100 см) на двоих</li>
-                        </ul>
-                        <p className="font-semibold mt-2">🔵 2 круга</p>
-                        <ul className="list-disc list-inside ml-4 space-y-1">
-                          <li>15 бросков мяча (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
-                          <li>8 перелезаний на двоих</li>
-                        </ul>
-                        <p className="font-semibold mt-2">🔵 1 круг</p>
-                        <ul className="list-disc list-inside ml-4 space-y-1">
-                          <li>18 бросков (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
-                          <li>10 перелезаний на двоих</li>
-                        </ul>
-                        <p className="text-yellow-400 font-bold mt-2">⚡100 ОП конец</p>
-                      </div>
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 3 ? null : 3)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">🔥</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 3</h4>
+                            <p className="text-sm text-white/60">Подарок Империи</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 3 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 3 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-white/90 font-semibold mb-2">Крышка 9 минут</p>
+                          <p className="text-yellow-400 font-bold mb-2">⚡100 ОП</p>
+                          <div className="space-y-2 text-white/80">
+                            <p className="font-semibold">🔵 3 круга</p>
+                            <ul className="list-disc list-inside ml-4 space-y-1">
+                              <li>12 бросков мяча (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
+                              <li>6 перелезаний друг за другом (стена 100 см) на двоих</li>
+                            </ul>
+                            <p className="font-semibold mt-2">🔵 2 круга</p>
+                            <ul className="list-disc list-inside ml-4 space-y-1">
+                              <li>15 бросков мяча (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
+                              <li>8 перелезаний на двоих</li>
+                            </ul>
+                            <p className="font-semibold mt-2">🔵 1 круг</p>
+                            <ul className="list-disc list-inside ml-4 space-y-1">
+                              <li>18 бросков (один бросает, второй в синхрон приседает рядом) (6/4 кг)</li>
+                              <li>10 перелезаний на двоих</li>
+                            </ul>
+                            <p className="text-yellow-400 font-bold mt-2">⚡100 ОП конец</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -442,57 +506,120 @@ export default function Index() {
                   </h3>
                   
                   <div className="space-y-4">
-                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
-                      <h4 className="text-xl font-bold text-primary mb-3">🏋️ Комплекс 1</h4>
-                      <p className="text-white/90 font-semibold mb-2">ЕМОМ 10 минут (смена атлетов происходит каждую минуту)</p>
-                      <div className="space-y-2 text-white/80">
-                        <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 5 берпи.</p>
-                        <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
-                        <p className="font-medium">2-ая минута: А2 - набирает калории на гребле || А1 - в начале делает 3 берпи.</p>
-                        <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
-                        <p className="text-blue-400 font-semibold mt-3">2 зачета: калорий + повторения</p>
-                      </div>
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 4 ? null : 4)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">🏋️</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 1</h4>
+                            <p className="text-sm text-white/60">Запрягаем греблю!</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 4 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 4 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-white/90 font-semibold mb-2">ЕМОМ 10 минут (смена атлетов происходит каждую минуту)</p>
+                          <div className="space-y-2 text-white/80">
+                            <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 5 берпи.</p>
+                            <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
+                            <p className="font-medium">2-ая минута: А2 - набирает калории на гребле || А1 - в начале делает 3 берпи.</p>
+                            <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
+                            <p className="text-blue-400 font-semibold mt-3">2 зачета: калорий + повторения</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
-                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
-                      <h4 className="text-xl font-bold text-primary mb-3">💪 Комплекс 2</h4>
-                      <p className="text-white/90 font-semibold mb-2">8 минут (все делится на двоих) - набрать как можно больше повторений.</p>
-                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
-                        <li>16 перешагиваний бокса с 1-ой гантелью (15/10) (М 60/Ж 50)</li>
-                        <li>16 швунгов гантели</li>
-                        <li>4 тележки</li>
-                      </ul>
-                      <p className="text-white/90 font-semibold mt-3 mb-2">Отдых 1 минута</p>
-                      <p className="text-white/90 font-semibold mb-2">4 минуты (все выполняется синхронно) - набрать как можно больше повторений</p>
-                      <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
-                        <li>12 перепрыгиваний гантели</li>
-                        <li>8 ситапов с медболом (каждый делает 8, вес медбола 6 кг)</li>
-                        <li>4 рывок + трастер</li>
-                      </ul>
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 5 ? null : 5)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">💪</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 2</h4>
+                            <p className="text-sm text-white/60">Операция «Двойной Удар»</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 5 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 5 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-white/90 font-semibold mb-2">8 минут (все делится на двоих) - набрать как можно больше повторений.</p>
+                          <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                            <li>16 перешагиваний бокса с 1-ой гантелью (15/10) (М 60/Ж 50)</li>
+                            <li>16 швунгов гантели</li>
+                            <li>4 тележки</li>
+                          </ul>
+                          <p className="text-white/90 font-semibold mt-3 mb-2">Отдых 1 минута</p>
+                          <p className="text-white/90 font-semibold mb-2">4 минуты (все выполняется синхронно) - набрать как можно больше повторений</p>
+                          <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
+                            <li>12 перепрыгиваний гантели</li>
+                            <li>8 ситапов с медболом (каждый делает 8, вес медбола 6 кг)</li>
+                            <li>4 рывок + трастер</li>
+                          </ul>
+                        </div>
+                      )}
                     </div>
 
-                    <div className="bg-white/5 rounded-lg p-5 border border-white/20">
-                      <h4 className="text-xl font-bold text-primary mb-3">🔥 Комплекс 3</h4>
-                      <p className="text-white/90 font-semibold mb-2">Крышка 9 минут</p>
-                      <p className="text-blue-400 font-bold mb-2">⚡100 ОП</p>
-                      <div className="space-y-2 text-white/80">
-                        <p className="font-semibold">🔵 3 круга</p>
-                        <ul className="list-disc list-inside ml-4 space-y-1">
-                          <li>12 бросков мяча (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
-                          <li>6 перелезаний друг за другом (стена 100 см) на двоих</li>
-                        </ul>
-                        <p className="font-semibold mt-2">🔵 2 круга</p>
-                        <ul className="list-disc list-inside ml-4 space-y-1">
-                          <li>15 бросков мяча (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
-                          <li>8 перелезаний на двоих</li>
-                        </ul>
-                        <p className="font-semibold mt-2">🔵 1 круг</p>
-                        <ul className="list-disc list-inside ml-4 space-y-1">
-                          <li>18 бросков (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
-                          <li>10 перелезаний на двоих</li>
-                        </ul>
-                        <p className="text-blue-400 font-bold mt-2">⚡100 ОП конец</p>
-                      </div>
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 6 ? null : 6)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">🔥</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 3</h4>
+                            <p className="text-sm text-white/60">Подарок Империи</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 6 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 6 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-white/90 font-semibold mb-2">Крышка 9 минут</p>
+                          <p className="text-blue-400 font-bold mb-2">⚡100 ОП</p>
+                          <div className="space-y-2 text-white/80">
+                            <p className="font-semibold">🔵 3 круга</p>
+                            <ul className="list-disc list-inside ml-4 space-y-1">
+                              <li>12 бросков мяча (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
+                              <li>6 перелезаний друг за другом (стена 100 см) на двоих</li>
+                            </ul>
+                            <p className="font-semibold mt-2">🔵 2 круга</p>
+                            <ul className="list-disc list-inside ml-4 space-y-1">
+                              <li>15 бросков мяча (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
+                              <li>8 перелезаний на двоих</li>
+                            </ul>
+                            <p className="font-semibold mt-2">🔵 1 круг</p>
+                            <ul className="list-disc list-inside ml-4 space-y-1">
+                              <li>18 бросков (один бросает, второй в синхрон приседает рядом) (9/6 кг)</li>
+                              <li>10 перелезаний на двоих</li>
+                            </ul>
+                            <p className="text-blue-400 font-bold mt-2">⚡100 ОП конец</p>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
