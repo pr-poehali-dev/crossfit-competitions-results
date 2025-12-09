@@ -10,6 +10,7 @@ interface Participant {
   name: string;
   category: string;
   avatar: string;
+  members?: string[];
   wod1_1: { result: string; points: number };
   wod1_2: { result: string; points: number };
   wod2: { result: string; points: number };
@@ -26,43 +27,43 @@ interface Participant {
 
 const mockParticipants: Participant[] = [
   // Команды Про
-  { id: 1, name: 'Команда 1', category: 'Команды Про', avatar: '🏆', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3_1: { result: '-', points: 0 }, wod3_2: { result: '-', points: 0 }, wod4_1: { result: '-', points: 0 }, wod4_2: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
-  { id: 2, name: 'Команда 2', category: 'Команды Про', avatar: '⚡', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3_1: { result: '-', points: 0 }, wod3_2: { result: '-', points: 0 }, wod4_1: { result: '-', points: 0 }, wod4_2: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
+  { id: 1, name: 'Команда 1', category: 'Команды Про', avatar: '🏆', members: ['Шилин Всеволод', 'Смирнов Иван', 'Кузьминцев Михаил', 'Феофанова Ярослава', 'Остапенко Динара', 'Иванова Татьяна'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3_1: { result: '-', points: 0 }, wod3_2: { result: '-', points: 0 }, wod4_1: { result: '-', points: 0 }, wod4_2: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
+  { id: 2, name: 'Команда 2', category: 'Команды Про', avatar: '⚡', members: ['Смирнов Павел', 'Басаев Дмитрий', 'Крылов Виктор', 'Васильева Алена', 'Разумихина Светлана', 'Филиппова Екатерина'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3_1: { result: '-', points: 0 }, wod3_2: { result: '-', points: 0 }, wod4_1: { result: '-', points: 0 }, wod4_2: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
   
   // Новички МЖ
-  { id: 3, name: 'ПроМёд', category: 'Новички МЖ', avatar: '🍯', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
-  { id: 4, name: 'Force of two', category: 'Новички МЖ', avatar: '⚡', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
-  { id: 5, name: 'Ёлочный ЕМОМ', category: 'Новички МЖ', avatar: '🎄', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 3, points: 0 }, totalScore: 0 },
-  { id: 6, name: 'Белые и красивые', category: 'Новички МЖ', avatar: '❄️', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 4, points: 0 }, totalScore: 0 },
-  { id: 7, name: 'Любят адреналин, но возможно напиток', category: 'Новички МЖ', avatar: '🥤', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 5, points: 0 }, totalScore: 0 },
-  { id: 8, name: 'Стар и млад', category: 'Новички МЖ', avatar: '👴', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 6, points: 0 }, totalScore: 0 },
-  { id: 9, name: 'Белоснежка +1', category: 'Новички МЖ', avatar: '👸', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 7, points: 0 }, totalScore: 0 },
-  { id: 10, name: 'Маша и медведь', category: 'Новички МЖ', avatar: '🐻', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 0 },
-  { id: 11, name: 'Кошки-мышки', category: 'Новички МЖ', avatar: '🐱', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 0 },
-  { id: 12, name: 'Битой по зубам', category: 'Новички МЖ', avatar: '🏏', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
-  { id: 13, name: 'Суперы', category: 'Новички МЖ', avatar: '🦸', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
-  { id: 14, name: 'ХМЕЛИСУМЕЛИ', category: 'Новички МЖ', avatar: '🍺', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
+  { id: 3, name: 'ПроМёд', category: 'Новички МЖ', avatar: '🍯', members: ['Воинов Тахир', 'Анненкова Кристина'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
+  { id: 4, name: 'Force of two', category: 'Новички МЖ', avatar: '⚡', members: ['Дьячков Иван', 'Стародубцева Инна'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
+  { id: 5, name: 'Ёлочный ЕМОМ', category: 'Новички МЖ', avatar: '🎄', members: ['Пивунов Никита', 'Боруцкая Анна'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 3, points: 0 }, totalScore: 0 },
+  { id: 6, name: 'Белые и красивые', category: 'Новички МЖ', avatar: '❄️', members: ['Воробьев Кирилл', 'Рогожина Мария'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 4, points: 0 }, totalScore: 0 },
+  { id: 7, name: 'Любят адреналин, но возможно напиток', category: 'Новички МЖ', avatar: '🥤', members: ['Купреев Кирилл', 'Ляпунова Юлия'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 5, points: 0 }, totalScore: 0 },
+  { id: 8, name: 'Стар и млад', category: 'Новички МЖ', avatar: '👴', members: ['Смирнов Константин', 'Смирнова Анна'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 6, points: 0 }, totalScore: 0 },
+  { id: 9, name: 'Белоснежка +1', category: 'Новички МЖ', avatar: '👸', members: ['Рюхина Олеся', 'Стебенев Андрей'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 7, points: 0 }, totalScore: 0 },
+  { id: 10, name: 'Маша и медведь', category: 'Новички МЖ', avatar: '🐻', members: ['Мурашова Алена', 'Мурашов Дмитрий'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 0 },
+  { id: 11, name: 'Кошки-мышки', category: 'Новички МЖ', avatar: '🐱', members: ['Кучер Оксана', 'Кочетков Александр'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 0 },
+  { id: 12, name: 'Битой по зубам', category: 'Новички МЖ', avatar: '🏏', members: ['Евграфов Владимир', 'Евграфова Алла'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
+  { id: 13, name: 'Суперы', category: 'Новички МЖ', avatar: '🦸', members: ['Шмелев Павел', 'Стародумова Анна'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
+  { id: 14, name: 'ХМЕЛИСУМЕЛИ', category: 'Новички МЖ', avatar: '🍺', members: ['Седов Сергей', 'Седова Валентина'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
   
   // Новички МЖ+
-  { id: 15, name: 'Семейные', category: 'Новички МЖ+', avatar: '👨‍👩‍👧', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
-  { id: 16, name: 'Лило и Стич', category: 'Новички МЖ+', avatar: '🌺', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
-  { id: 17, name: 'Steel&fire', category: 'Новички МЖ+', avatar: '🔥', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 3, points: 0 }, totalScore: 0 },
-  { id: 18, name: 'Одуванчики', category: 'Новички МЖ+', avatar: '🌼', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 4, points: 0 }, totalScore: 0 },
-  { id: 19, name: 'Елки ИГО голки', category: 'Новички МЖ+', avatar: '🎄', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 5, points: 0 }, totalScore: 0 },
-  { id: 20, name: 'Елочные гладиаторы', category: 'Новички МЖ+', avatar: '⚔️', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 6, points: 0 }, totalScore: 0 },
-  { id: 21, name: 'НЕЛИШНИЕ КИЛОГРАММЫ', category: 'Новички МЖ+', avatar: '⚖️', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 7, points: 0 }, totalScore: 0 },
-  { id: 22, name: 'Все еще новички', category: 'Новички МЖ+', avatar: '🆕', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 0 },
-  { id: 23, name: 'НикОля', category: 'Новички МЖ+', avatar: '🎅', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 0 },
-  { id: 24, name: 'Hoops&Wilde', category: 'Новички МЖ+', avatar: '🏀', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
-  { id: 25, name: 'Можем хуже', category: 'Новички МЖ+', avatar: '🤷', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
-  { id: 26, name: 'Однофамильцы', category: 'Новички МЖ+', avatar: '👥', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
-  { id: 27, name: 'Зов Джунглей', category: 'Новички МЖ+', avatar: '🎯', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 13, points: 0 }, totalScore: 0 },
-  { id: 28, name: 'Внуки Деда Мороза', category: 'Новички МЖ+', avatar: '🎅', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 14, points: 0 }, totalScore: 0 },
-  { id: 29, name: 'Мутный Енот', category: 'Новички МЖ+', avatar: '🦝', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 15, points: 0 }, totalScore: 0 },
-  { id: 30, name: 'Ух ты пухты', category: 'Новички МЖ+', avatar: '🎉', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 16, points: 0 }, totalScore: 0 },
-  { id: 31, name: 'Нас заставили', category: 'Новички МЖ+', avatar: '🌟', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 17, points: 0 }, totalScore: 0 },
-  { id: 32, name: 'Пухлые утки', category: 'Новички МЖ+', avatar: '🦆', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 18, points: 0 }, totalScore: 0 },
-  { id: 33, name: 'Киля', category: 'Новички МЖ+', avatar: '⚓', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 19, points: 0 }, totalScore: 0 },
+  { id: 15, name: 'Семейные', category: 'Новички МЖ+', avatar: '👨‍👩‍👧', members: ['Виноградова Юлия', 'Кашин Артем'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 1, points: 0 }, totalScore: 0 },
+  { id: 16, name: 'Лило и Стич', category: 'Новички МЖ+', avatar: '🌺', members: ['Сорокина Мария', 'Беляев Владислав'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 2, points: 0 }, totalScore: 0 },
+  { id: 17, name: 'Steel&fire', category: 'Новички МЖ+', avatar: '🔥', members: ['Сикачев Денис', 'Тер-Микаелян Мария'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 3, points: 0 }, totalScore: 0 },
+  { id: 18, name: 'Одуванчики', category: 'Новички МЖ+', avatar: '🌼', members: ['Ларин Иван', 'Подтуркина Екатерина'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 4, points: 0 }, totalScore: 0 },
+  { id: 19, name: 'Елки ИГО голки', category: 'Новички МЖ+', avatar: '🎄', members: ['Клугман Любовь', 'Букарев Сергей'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 5, points: 0 }, totalScore: 0 },
+  { id: 20, name: 'Елочные гладиаторы', category: 'Новички МЖ+', avatar: '⚔️', members: ['Озеров Павел', 'Травина Алина'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 6, points: 0 }, totalScore: 0 },
+  { id: 21, name: 'НЕЛИШНИЕ КИЛОГРАММЫ', category: 'Новички МЖ+', avatar: '⚖️', members: ['Жебуртович Татьяна', 'Жебрутович Сергей'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 7, points: 0 }, totalScore: 0 },
+  { id: 22, name: 'Все еще новички', category: 'Новички МЖ+', avatar: '🆕', members: ['Запорожцев Сергей', 'Добровольская Любовь'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 0 },
+  { id: 23, name: 'НикОля', category: 'Новички МЖ+', avatar: '🎅', members: ['Заботин Никита', 'Сенчук Ольга'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 0 },
+  { id: 24, name: 'Hoops&Wilde', category: 'Новички МЖ+', avatar: '🏀', members: ['Ляда Тарас', 'Прудникова Екатерина'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
+  { id: 25, name: 'Можем хуже', category: 'Новички МЖ+', avatar: '🤷', members: ['Пресняков Илья', 'Кудрявцева Надежда'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
+  { id: 26, name: 'Однофамильцы', category: 'Новички МЖ+', avatar: '👥', members: ['Тарасенко Андрей', 'Тарасенко Ольга'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
+  { id: 27, name: 'Зов Джунглей', category: 'Новички МЖ+', avatar: '🎯', members: ['Ватутина Маргарита', 'Ватутин Роман'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 13, points: 0 }, totalScore: 0 },
+  { id: 28, name: 'Внуки Деда Мороза', category: 'Новички МЖ+', avatar: '🎅', members: ['Бекмурадова Илона', 'Павлов Константин'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 14, points: 0 }, totalScore: 0 },
+  { id: 29, name: 'Мутный Енот', category: 'Новички МЖ+', avatar: '🦝', members: ['Игнатьев Дмитрий', 'Кольцова Яна'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 15, points: 0 }, totalScore: 0 },
+  { id: 30, name: 'Ух ты пухты', category: 'Новички МЖ+', avatar: '🎉', members: ['Немешаева Оксана', 'Немешаев Максим'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 16, points: 0 }, totalScore: 0 },
+  { id: 31, name: 'Нас заставили', category: 'Новички МЖ+', avatar: '🌟', members: ['Устимов Егор', 'Комиссарова Юлия'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 17, points: 0 }, totalScore: 0 },
+  { id: 32, name: 'Пухлые утки', category: 'Новички МЖ+', avatar: '🦆', members: ['Горфинкель Анна', 'Устюгов Никита'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 18, points: 0 }, totalScore: 0 },
+  { id: 33, name: 'Киля', category: 'Новички МЖ+', avatar: '⚓', members: ['Малинкин Кирилл', 'Петухова Ольга'], wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 19, points: 0 }, totalScore: 0 },
 ];
 
 interface HeatWithTeams {
@@ -378,6 +379,7 @@ export default function Index() {
   const [selectedCategory, setSelectedCategory] = useState<string>('Новички МЖ');
   const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
   const [expandedWorkout, setExpandedWorkout] = useState<number | null>(null);
+  const [expandedTeam, setExpandedTeam] = useState<number | null>(null);
 
   const filteredParticipants = mockParticipants
     .filter(p => p.category === selectedCategory)
@@ -500,9 +502,31 @@ export default function Index() {
                             </div>
                           </td>
                           <td className="px-4 py-3">
-                            <div className="flex items-center gap-2">
-                              <div className="text-2xl">{participant.avatar}</div>
-                              <div className="font-bold text-base text-white">{participant.name}</div>
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <div className="text-2xl">{participant.avatar}</div>
+                                <div className="font-bold text-base text-white">{participant.name}</div>
+                                {participant.members && (
+                                  <button
+                                    onClick={() => setExpandedTeam(expandedTeam === participant.id ? null : participant.id)}
+                                    className="ml-2 text-primary hover:text-primary/80 transition-colors"
+                                  >
+                                    <Icon 
+                                      name={expandedTeam === participant.id ? "ChevronUp" : "ChevronDown"} 
+                                      size={20}
+                                    />
+                                  </button>
+                                )}
+                              </div>
+                              {expandedTeam === participant.id && participant.members && (
+                                <div className="mt-2 pl-10 space-y-1">
+                                  {participant.members.map((member, idx) => (
+                                    <div key={idx} className="text-sm text-white/70">
+                                      {member}
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           </td>
                           <td className="px-4 py-3 text-center">
