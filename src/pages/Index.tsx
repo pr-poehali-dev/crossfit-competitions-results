@@ -81,24 +81,19 @@ interface ScheduleEventWithTeams {
 const mockSchedule: ScheduleEventWithTeams[] = [
   { 
     id: 0, 
-    event: 'Регистрация и брифинг', 
-    heats: [
-      { 
-        time: '08:20 - 08:50', 
-        category: 'Регистрация',
-        teams: []
-      },
-      { 
-        time: '09:00', 
-        category: 'Брифинг 1 комплекс + открытие',
-        teams: []
-      },
-    ],
+    event: '08:20 - 08:50 Регистрация', 
+    heats: [],
     status: 'completed' 
   },
   { 
     id: 1, 
-    event: 'Комплекс 1 - Запрягаем греблю!', 
+    event: '09:00 Открытие и брифинг 1 комплекс', 
+    heats: [],
+    status: 'completed' 
+  },
+  { 
+    id: 2, 
+    event: '09:45 Старт 1-ый комплекс', 
     heats: [
       { 
         time: '09:45', 
@@ -168,8 +163,14 @@ const mockSchedule: ScheduleEventWithTeams[] = [
     status: 'completed' 
   },
   { 
-    id: 2, 
-    event: 'Комплекс 2 - Операция «Двойной Удар»', 
+    id: 3, 
+    event: '11:20 Брифинг 2 комплекс', 
+    heats: [],
+    status: 'live' 
+  },
+  { 
+    id: 4, 
+    event: '11:40 Старт 2-ой комплекс', 
     heats: [
       { 
         time: '11:40', 
@@ -179,11 +180,7 @@ const mockSchedule: ScheduleEventWithTeams[] = [
           '2. Команда 2 (Команды Про)'
         ]
       },
-      { 
-        time: '11:50', 
-        category: 'Смена оборудования',
-        teams: []
-      },
+
       { 
         time: '12:00', 
         category: 'Заход 2',
@@ -255,8 +252,14 @@ const mockSchedule: ScheduleEventWithTeams[] = [
     status: 'live' 
   },
   { 
-    id: 3, 
-    event: 'Комплекс 3 - Подарок Империи', 
+    id: 5, 
+    event: '13:55 Брифинг 3 комплекс', 
+    heats: [],
+    status: 'upcoming' 
+  },
+  { 
+    id: 6, 
+    event: '14:15 Старт 3-ий комплекс', 
     heats: [
       { 
         time: '14:15', 
@@ -349,11 +352,11 @@ const mockSchedule: ScheduleEventWithTeams[] = [
     status: 'upcoming' 
   },
   { 
-    id: 4, 
-    event: 'Комплекс 4 - Снайперы в деле', 
+    id: 7, 
+    event: '16:15 Старт 4-ый комплекс', 
     heats: [
       { 
-        time: '16:30', 
+        time: '16:15', 
         category: 'Команды Про',
         teams: [
           '1. Команда 1 (Команды Про)',
