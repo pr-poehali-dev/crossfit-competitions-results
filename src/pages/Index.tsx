@@ -398,7 +398,7 @@ export default function Index() {
             <div className="flex items-center justify-center gap-4 sm:gap-8 pt-4">
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl md:text-5xl font-bold">{mockParticipants.length}</div>
-                <div className="text-xs sm:text-sm opacity-80 uppercase tracking-wide">Участников</div>
+                <div className="text-xs sm:text-sm opacity-80 uppercase tracking-wide">Команды</div>
               </div>
               <div className="h-12 sm:h-16 w-px bg-white/30"></div>
               <div className="text-center">
