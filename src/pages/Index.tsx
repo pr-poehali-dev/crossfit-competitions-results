@@ -366,6 +366,12 @@ const mockSchedule: ScheduleEventWithTeams[] = [
     ],
     status: 'upcoming' 
   },
+  { 
+    id: 8, 
+    event: '16:50 Награждение победителей', 
+    heats: [],
+    status: 'upcoming' 
+  },
 ];
 
 export default function Index() {
@@ -396,8 +402,8 @@ export default function Index() {
               </div>
               <div className="h-12 sm:h-16 w-px bg-white/30"></div>
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-bold">{mockSchedule.length}</div>
-                <div className="text-xs sm:text-sm opacity-80 uppercase tracking-wide">Комплексов</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold">4</div>
+                <div className="text-xs sm:text-sm opacity-80 uppercase tracking-wide">Комплекса</div>
               </div>
             </div>
           </div>
