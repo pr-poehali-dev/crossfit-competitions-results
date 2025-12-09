@@ -611,7 +611,7 @@ export default function Index() {
                         <div className="p-5 border-t border-white/20 bg-black/20">
                           <p className="text-white/90 font-semibold mb-2">ЕМОМ 10 минут (смена атлетов происходит каждую минуту)</p>
                           <div className="space-y-2 text-white/80">
-                            <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 5 берпи.</p>
+                            <p className="font-medium">1-ая минута: А1 - набирает калории на гребле || А2 - в начале делает 3 берпи.</p>
                             <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
                             <p className="font-medium">2-ая минута: А2 - набирает калории на гребле || А1 - в начале делает 3 берпи.</p>
                             <p>Дальше до конца минуты набирает повторения связки: 9 становых + 6 взятий с виса штанги + 3 фронт.приседа (М 40/Ж 25 кг)</p>
@@ -644,7 +644,7 @@ export default function Index() {
                         <div className="p-5 border-t border-white/20 bg-black/20">
                           <p className="text-white/90 font-semibold mb-2">8 минут (все делится на двоих) - набрать как можно больше повторений.</p>
                           <ul className="list-disc list-inside text-white/80 space-y-1 ml-4">
-                            <li>16 перешагиваний бокса с 1-ой гантелью (15/10) (М 60/Ж 50)</li>
+                            <li>16 перешагиваний бокса с 1-ой гантелью (17,5/10) (М 60/Ж 50)</li>
                             <li>16 швунгов гантели</li>
                             <li>4 тележки</li>
                           </ul>
@@ -700,6 +700,179 @@ export default function Index() {
                             </ul>
                             <p className="text-blue-400 font-bold mt-2">⚡100 ОП конец</p>
                           </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* КОМАНДЫ ПРО */}
+                <div className="bg-black/40 rounded-xl p-6 border-2 border-red-400/40">
+                  <h3 className="text-2xl font-bold text-red-400 mb-6 flex items-center gap-2">
+                    <Icon name="Crown" size={28} />
+                    КОМАНДЫ ПРО 🎅🤶
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 7 ? null : 7)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">🏋️</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 1</h4>
+                            <p className="text-sm text-white/60">ПРОДВИНУТЫЕ</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 7 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 7 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-red-400 font-bold mb-3">Часть 1: Крышка 7 минут (тройка 1 - состав любой)</p>
+                          <div className="space-y-2 text-white/80">
+                            <p>🔥 3/3 берпи синхрон втроем через бокс (боксы 50 см)</p>
+                            <p className="ml-4">А1: 6 выходов</p>
+                            <p>🔥 4/4 берпи синхрон втроем через бокс</p>
+                            <p className="ml-4">А2: 12 подтягиваний до груди</p>
+                            <p>🔥 5/5 берпи через бокс</p>
+                            <p className="ml-4">А3: 18 подтягиваний до подбородка</p>
+                            <p>🔥 6/6 берпи ч/з бокс</p>
+                            <p className="text-yellow-400 font-semibold mt-2">❗❗❗P.S в первой части есть нюанс, который будет озвучен на брифинге</p>
+                          </div>
+                          
+                          <p className="text-white/90 font-semibold mt-4 mb-3">⏱️ 30 секунд отдых</p>
+                          
+                          <p className="text-red-400 font-bold mb-3">Часть 2: крышка 7 минут (тройка 2 - три человека, которые не участвовали в 1-ой части)</p>
+                          <div className="space-y-2 text-white/80">
+                            <p>🔥 8 девил пресс + трастер синхрон (20/15)</p>
+                            <p className="text-sm ml-4">(руку можно не менять, если тройка из 3-х мужчин, то третья гантель 22.5, если 3 женщины, то третья 17.5)</p>
+                            <p className="ml-4">А1: 8 калорий байк</p>
+                            <p>🔥 10 девил пресс + трастер синхрон</p>
+                            <p className="ml-4">А2: 10 калорий</p>
+                            <p>🔥 12 девил пресс + трастер</p>
+                            <p className="ml-4">А3: 12 калорий</p>
+                            <p>🔥 14 девил пресс + трастер</p>
+                            <p className="text-red-400 font-semibold mt-3">Два зачета: 1 части время или повторения / 2 часть время или повторения</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 8 ? null : 8)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">💪</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 2</h4>
+                            <p className="text-sm text-white/60">В двойках</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 8 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 8 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-white/90 font-bold mb-3">6 AMRAP по 2 минуты</p>
+                          
+                          <div className="space-y-3 text-white/80">
+                            <div>
+                              <p className="font-bold text-red-400">🔥 Amrap 2 минуты - 1 раунд, 4 раунд</p>
+                              <ul className="list-disc list-inside ml-4 space-y-1">
+                                <li>5 рывков синхронно (40/25)</li>
+                                <li>А1: 5 НКП / А2 висит</li>
+                                <li>А2: 5 НКП / А1 висит</li>
+                              </ul>
+                            </div>
+                            
+                            <div>
+                              <p className="font-bold text-red-400">🔥 Amrap 2 минуты - 2 раунд, 5 раунд</p>
+                              <ul className="list-disc list-inside ml-4 space-y-1">
+                                <li>А1: 5 становых + 3 взятия с виса + 1 швунг (50/35)</li>
+                                <li>А2: удерживает штангу внизу, упираться в бедра нельзя</li>
+                                <li>Смена произвольная, но только после того, как атлет выполнил полную связку</li>
+                              </ul>
+                            </div>
+                            
+                            <div>
+                              <p className="font-bold text-red-400">🔥 Amrap 2 минуты - 3 раунд, 6 раунд</p>
+                              <ul className="list-disc list-inside ml-4 space-y-1">
+                                <li>А1: набирает калории на гребле</li>
+                                <li>А2: набирает перешагивания ч/з бокс с двумя гантелями (одна гантель 20, вторая 15)</li>
+                                <li>Смена в любой момент (высота 60/50 см, переворачивают атлеты бокс сами)</li>
+                              </ul>
+                            </div>
+                          </div>
+                          
+                          <p className="text-red-400 font-semibold mt-3">Зачет 1: сумма всех повторений</p>
+                          <p className="text-yellow-400 text-sm mt-2">❗ После своего Amrap двойка обязана дать пятюню следующей паре.</p>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="bg-white/5 rounded-lg border border-white/20 overflow-hidden">
+                      <button
+                        onClick={() => setExpandedWorkout(expandedWorkout === 9 ? null : 9)}
+                        className="w-full flex items-center justify-between p-5 hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">🔥</span>
+                          <div className="text-left">
+                            <h4 className="text-xl font-bold text-primary">Комплекс 3</h4>
+                            <p className="text-sm text-white/60">Крышка 15 минут</p>
+                          </div>
+                        </div>
+                        <Icon 
+                          name={expandedWorkout === 9 ? "ChevronUp" : "ChevronDown"} 
+                          size={24}
+                          className="text-white/60"
+                        />
+                      </button>
+                      
+                      {expandedWorkout === 9 && (
+                        <div className="p-5 border-t border-white/20 bg-black/20">
+                          <p className="text-red-400 font-bold mb-3">🔥 Часть 1: АМРАП 8 минут (4-ка)</p>
+                          <div className="space-y-2 text-white/80">
+                            <p className="font-semibold">• 80 бросков медбола (9/6)</p>
+                            <p className="ml-4 text-sm">А1 бросает / трое других приседают в синхрон / смена в любой момент</p>
+                            <p className="mt-2">Дальше до конца 8-ми минут набрать как можно больше кругов синхронно вчетвером</p>
+                            <ul className="list-disc list-inside ml-4">
+                              <li>4-6-8-10-… Выпады с гирей (24/16)</li>
+                              <li>Махи Гири</li>
+                            </ul>
+                          </div>
+                          
+                          <div className="my-4 border-t border-dashed border-white/30 pt-3">
+                            <p className="text-yellow-400 text-sm font-semibold">⚡ Сразу после 8-ми минут, до конца крышки.</p>
+                            <p className="text-yellow-400 text-sm">Старт двойки происходит, только после того, как вся 4-ка вбежала в раму.</p>
+                          </div>
+                          
+                          <p className="text-red-400 font-bold mb-3">🔥 АФАП двойка</p>
+                          <div className="space-y-2 text-white/80">
+                            <p className="font-semibold">80 ДП на двоих, может сделать 1</p>
+                            <p className="font-semibold">4 круга:</p>
+                            <ul className="list-disc list-inside ml-4">
+                              <li>А1: 5 заходов на стену / А2: 3 подъем переворотом - работают одновременно</li>
+                              <li>5 оверхед приседаний штанга синхронно (40/25)</li>
+                              <li>В каждом кругу смена (А2 делает заходы на стену, А1 подъем переворотом)</li>
+                            </ul>
+                            <p className="font-semibold mt-2">80 ДП на двоих, может сделать 1</p>
+                          </div>
+                          
+                          <p className="text-red-400 font-semibold mt-3">2 зачета: повторения в первой части и общее время</p>
                         </div>
                       )}
                     </div>
