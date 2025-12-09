@@ -40,7 +40,7 @@ const mockParticipants: Participant[] = [
   { id: 10, name: 'Маша и медведь', category: 'Новички МЖ', avatar: '🐻', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 8, points: 0 }, totalScore: 0 },
   { id: 11, name: 'Кошки-мышки', category: 'Новички МЖ', avatar: '🐱', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 9, points: 0 }, totalScore: 0 },
   { id: 12, name: 'Битой по зубам', category: 'Новички МЖ', avatar: '🏏', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
-  { id: 13, name: 'Суперы (ударение на У)', category: 'Новички МЖ', avatar: '🦸', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
+  { id: 13, name: 'Суперы', category: 'Новички МЖ', avatar: '🦸', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
   { id: 14, name: 'ХМЕЛИСУМЕЛИ', category: 'Новички МЖ', avatar: '🍺', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
   
   // Новички МЖ+
@@ -56,12 +56,13 @@ const mockParticipants: Participant[] = [
   { id: 24, name: 'Hoops&Wilde', category: 'Новички МЖ+', avatar: '🏀', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 10, points: 0 }, totalScore: 0 },
   { id: 25, name: 'Можем хуже', category: 'Новички МЖ+', avatar: '🤷', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 11, points: 0 }, totalScore: 0 },
   { id: 26, name: 'Однофамильцы', category: 'Новички МЖ+', avatar: '👥', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 12, points: 0 }, totalScore: 0 },
-  { id: 27, name: 'Ватутины', category: 'Новички МЖ+', avatar: '🎯', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 13, points: 0 }, totalScore: 0 },
+  { id: 27, name: 'Зов Джунглей', category: 'Новички МЖ+', avatar: '🎯', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 13, points: 0 }, totalScore: 0 },
   { id: 28, name: 'Внуки Деда Мороза', category: 'Новички МЖ+', avatar: '🎅', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 14, points: 0 }, totalScore: 0 },
   { id: 29, name: 'Мутный Енот', category: 'Новички МЖ+', avatar: '🦝', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 15, points: 0 }, totalScore: 0 },
   { id: 30, name: 'Ух ты пухты', category: 'Новички МЖ+', avatar: '🎉', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 16, points: 0 }, totalScore: 0 },
-  { id: 31, name: 'Устимов', category: 'Новички МЖ+', avatar: '🌟', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 17, points: 0 }, totalScore: 0 },
+  { id: 31, name: 'Нас заставили', category: 'Новички МЖ+', avatar: '🌟', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 17, points: 0 }, totalScore: 0 },
   { id: 32, name: 'Пухлые утки', category: 'Новички МЖ+', avatar: '🦆', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 18, points: 0 }, totalScore: 0 },
+  { id: 33, name: 'Киля', category: 'Новички МЖ+', avatar: '⚓', wod1_1: { result: '-', points: 0 }, wod1_2: { result: '-', points: 0 }, wod2: { result: '-', points: 0 }, wod3: { result: '-', points: 0 }, final: { place: 19, points: 0 }, totalScore: 0 },
 ];
 
 interface HeatWithTeams {
@@ -134,7 +135,7 @@ const mockSchedule: ScheduleEventWithTeams[] = [
           'Белые и красивые (Новички МЖ, дорожка 2)',
           'Можем хуже (Новички МЖ+, дорожка 3)',
           'Однофамильцы (Новички МЖ+, дорожка 4)',
-          'Ватутины (Новички МЖ+, дорожка 5)',
+          'Зов Джунглей (Новички МЖ+, дорожка 5)',
           'Внуки Деда Мороза (Новички МЖ+, дорожка 6)'
         ]
       },
@@ -142,11 +143,11 @@ const mockSchedule: ScheduleEventWithTeams[] = [
         time: '10:55', 
         category: 'Заход 6',
         teams: [
-          'Суперы (ударение на У) (Новички МЖ, дорожка 1)',
+          'Суперы (Новички МЖ, дорожка 1)',
           'Стар и млад (Новички МЖ, дорожка 2)',
           'Мутный Енот (Новички МЖ+, дорожка 3)',
           'Ух ты пухты (Новички МЖ+, дорожка 4)',
-          'Устимов (Новички МЖ+, дорожка 5)',
+          'Нас заставили (Новички МЖ+, дорожка 5)',
           'Пухлые утки (Новички МЖ+, дорожка 6)'
         ]
       },
