@@ -575,56 +575,66 @@ export default function Index() {
                     className="rounded-xl border-2 border-white/20 overflow-hidden animate-slide-in bg-black/40"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <button
-                      onClick={() => setExpandedEvent(expandedEvent === event.id ? null : event.id)}
-                      className="w-full flex items-center gap-6 p-5 hover:bg-white/10 transition-all duration-300"
-                    >
-                      <div className="flex-1 flex items-center gap-6">
-                        <div>
-                          <h4 className="font-bold text-xl text-left text-white">{event.event}</h4>
-                          <p className="text-sm text-white/60 text-left">
-                            {event.heats.length} заходов
-                          </p>
-                        </div>
-                      </div>
-
-                      <Icon 
-                        name={expandedEvent === event.id ? "ChevronUp" : "ChevronDown"} 
-                        size={24}
-                        className="text-white/60"
-                      />
-                    </button>
-                    
-                    {expandedEvent === event.id && (
-                      <div className="border-t border-white/20 bg-white/5 p-4 space-y-3">
-                        {event.heats.map((heat, heatIndex) => (
-                          <div 
-                            key={heatIndex}
-                            className="bg-black/40 rounded-lg p-4 space-y-3"
-                          >
-                            <div className="flex items-center gap-4">
-                              <div className="text-2xl font-bold text-primary min-w-[60px]">
-                                {heat.time}
-                              </div>
-                              <div className="h-10 w-px bg-white/20"></div>
-                              <Badge variant="outline" className="font-semibold border-white/40 text-white">
-                                {heat.category}
-                              </Badge>
+                    {event.heats.length > 0 ? (
+                      <>
+                        <button
+                          onClick={() => setExpandedEvent(expandedEvent === event.id ? null : event.id)}
+                          className="w-full flex items-center gap-6 p-5 hover:bg-white/10 transition-all duration-300"
+                        >
+                          <div className="flex-1 flex items-center gap-6">
+                            <div>
+                              <h4 className="font-bold text-xl text-left text-white">{event.event}</h4>
+                              <p className="text-sm text-white/60 text-left">
+                                {event.heats.length} заходов
+                              </p>
                             </div>
-                            {heat.teams.length > 0 && (
-                              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 ml-0 sm:ml-20">
-                                {heat.teams.map((team, teamIndex) => (
-                                  <div 
-                                    key={teamIndex}
-                                    className="text-sm text-white/80 bg-white/5 px-3 py-2 rounded border border-white/10"
-                                  >
-                                    {team}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
                           </div>
-                        ))}
+
+                          <Icon 
+                            name={expandedEvent === event.id ? "ChevronUp" : "ChevronDown"} 
+                            size={24}
+                            className="text-white/60"
+                          />
+                        </button>
+                        
+                        {expandedEvent === event.id && (
+                          <div className="border-t border-white/20 bg-white/5 p-4 space-y-3">
+                            {event.heats.map((heat, heatIndex) => (
+                              <div 
+                                key={heatIndex}
+                                className="bg-black/40 rounded-lg p-4 space-y-3"
+                              >
+                                <div className="flex items-center gap-4">
+                                  <div className="text-2xl font-bold text-primary min-w-[60px]">
+                                    {heat.time}
+                                  </div>
+                                  <div className="h-10 w-px bg-white/20"></div>
+                                  <Badge variant="outline" className="font-semibold border-white/40 text-white">
+                                    {heat.category}
+                                  </Badge>
+                                </div>
+                                {heat.teams.length > 0 && (
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 ml-0 sm:ml-20">
+                                    {heat.teams.map((team, teamIndex) => (
+                                      <div 
+                                        key={teamIndex}
+                                        className="text-sm text-white/80 bg-white/5 px-3 py-2 rounded border border-white/10"
+                                      >
+                                        {team}
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="w-full flex items-center gap-6 p-5">
+                        <div className="flex-1">
+                          <h4 className="font-bold text-xl text-left text-white">{event.event}</h4>
+                        </div>
                       </div>
                     )}
                   </div>
