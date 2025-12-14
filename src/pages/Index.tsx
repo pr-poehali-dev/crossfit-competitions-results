@@ -383,7 +383,7 @@ export default function Index() {
 
   const filteredParticipants = mockParticipants
     .filter(p => p.category === selectedCategory)
-    .sort((a, b) => b.totalScore - a.totalScore);
+    .sort((a, b) => a.final.place - b.final.place);
 
   return (
     <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(https://cdn.poehali.dev/files/86dd6813-c6ff-44a0-b096-65eed9be5cdb.jpeg)' }}>
