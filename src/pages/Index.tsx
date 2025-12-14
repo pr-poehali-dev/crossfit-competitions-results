@@ -46,9 +46,9 @@ const mockParticipants: Participant[] = [
   // Новички МЖ+
   { id: 520, name: 'Елочные гладиаторы', category: 'Новички МЖ+', avatar: '⚔️', members: ['Озеров Павел', 'Травина Алина'], wod1_1: { result: '151 кал', points: 100 }, wod1_2: { result: '265 повт', points: 90 }, wod2: { result: '348 повт', points: 100 }, wod3_1: { result: '5:31 (328 повт)', points: 100 }, wod3_2: { result: '', points: 0 }, final: { place: 1, points: 390 }, totalScore: 390 },
   { id: 517, name: 'Steel&fire', category: 'Новички МЖ+', avatar: '🔥', members: ['Сикачев Денис', 'Тер-Микаелян Мария'], wod1_1: { result: '147 кал', points: 95 }, wod1_2: { result: '254 повт', points: 80 }, wod2: { result: '338 повт', points: 95 }, wod3_1: { result: '6:31 (328 повт)', points: 85 }, wod3_2: { result: '', points: 0 }, final: { place: 2, points: 355 }, totalScore: 355 },
-  { id: 516, name: 'Лило и Стич', category: 'Новички МЖ+', avatar: '🌺', members: ['Сорокина Мария', 'Беляев Владислав'], wod1_1: { result: '138 кал', points: 80 }, wod1_2: { result: '234 повт', points: 75 }, wod2: { result: '338 повт', points: 95 }, wod3_1: { result: '6:21 (328 повт)', points: 90 }, wod3_2: { result: '', points: 0 }, final: { place: 3, points: 340 }, totalScore: 340 },
+  { id: 516, name: 'Лило и Стич', category: 'Новички МЖ+', avatar: '🌺', members: ['Сорокина Мария', 'Беляев Владислав'], wod1_1: { result: '138 кал', points: 80 }, wod1_2: { result: '234 повт', points: 75 }, wod2: { result: '338 повт', points: 95 }, wod3_1: { result: '6:21 (328 повт)', points: 90 }, wod3_2: { result: '', points: 0 }, final: { place: 4, points: 340 }, totalScore: 340 },
   { id: 518, name: 'Одуванчики', category: 'Новички МЖ+', avatar: '🌼', members: ['Ларин Иван', 'Подтуркина Екатерина'], wod1_1: { result: '146 кал', points: 90 }, wod1_2: { result: '264 повт', points: 85 }, wod2: { result: '309 повт', points: 70 }, wod3_1: { result: '6:18 (328 повт)', points: 95 }, wod3_2: { result: '', points: 0 }, final: { place: 3, points: 340 }, totalScore: 340 },
-  { id: 521, name: 'НЕЛИШНИЕ КИЛОГРАММЫ', category: 'Новички МЖ+', avatar: '⚖️', members: ['Жебуртович Татьяна', 'Жебуртович Сергей'], wod1_1: { result: '138 кал', points: 80 }, wod1_2: { result: '336 повт', points: 100 }, wod2: { result: '318 повт', points: 80 }, wod3_1: { result: '6:40 (328 повт)', points: 80 }, wod3_2: { result: '', points: 0 }, final: { place: 3, points: 340 }, totalScore: 340 },
+  { id: 521, name: 'НЕЛИШНИЕ КИЛОГРАММЫ', category: 'Новички МЖ+', avatar: '⚖️', members: ['Жебуртович Татьяна', 'Жебуртович Сергей'], wod1_1: { result: '138 кал', points: 80 }, wod1_2: { result: '336 повт', points: 100 }, wod2: { result: '318 повт', points: 80 }, wod3_1: { result: '6:40 (328 повт)', points: 80 }, wod3_2: { result: '', points: 0 }, final: { place: 4, points: 340 }, totalScore: 340 },
   { id: 524, name: 'Hoops&Wilde', category: 'Новички МЖ+', avatar: '🏀', members: ['Ляда Тарас', 'Прудникова Екатерина'], wod1_1: { result: '131 кал', points: 50 }, wod1_2: { result: '266 повт', points: 95 }, wod2: { result: '331 повт', points: 85 }, wod3_1: { result: '7:27 (328 повт)', points: 35 }, wod3_2: { result: '', points: 0 }, final: { place: 6, points: 265 }, totalScore: 265 },
   { id: 523, name: 'НикОля', category: 'Новички МЖ+', avatar: '🎅', members: ['Заботин Никита', 'Сенчук Ольга'], wod1_1: { result: '141 кал', points: 85 }, wod1_2: { result: '227 повт', points: 55 }, wod2: { result: '288 повт', points: 40 }, wod3_1: { result: '6:55 (328 повт)', points: 75 }, wod3_2: { result: '', points: 0 }, final: { place: 7, points: 255 }, totalScore: 255 },
   { id: 526, name: 'Ух ты пухты', category: 'Новички МЖ+', avatar: '🎯', members: ['Казарова Эльвира', 'Андреев Владимир'], wod1_1: { result: '132 кал', points: 55 }, wod1_2: { result: '228 повт', points: 65 }, wod2: { result: '298 повт', points: 55 }, wod3_1: { result: '6:56 (328 повт)', points: 70 }, wod3_2: { result: '', points: 0 }, final: { place: 8, points: 245 }, totalScore: 245 },
@@ -388,6 +388,7 @@ export default function Index() {
   const [expandedEvent, setExpandedEvent] = useState<number | null>(null);
   const [expandedWorkout, setExpandedWorkout] = useState<number | null>(null);
   const [expandedTeam, setExpandedTeam] = useState<number | null>(null);
+  const [showAllMembers, setShowAllMembers] = useState<boolean>(true);
 
   const filteredParticipants = mockParticipants
     .filter(p => p.category === selectedCategory)
@@ -480,6 +481,15 @@ export default function Index() {
                             {index === 2 && <Badge className="bg-amber-600 text-white">🥉 3 место</Badge>}
                           </CardTitle>
                           <p className="text-xs sm:text-sm text-muted-foreground mt-1">{participant.category}</p>
+                          {participant.members && participant.members.length > 0 && (
+                            <div className="mt-2 flex flex-wrap gap-1">
+                              {participant.members.map((member, idx) => (
+                                <Badge key={idx} variant="outline" className="text-xs">
+                                  {member}
+                                </Badge>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       </div>
                       <div className="text-right">
@@ -491,22 +501,6 @@ export default function Index() {
 
                   {expandedTeam === participant.id && (
                     <CardContent className="pt-0 space-y-6 animate-fade-in">
-                      {participant.members && participant.members.length > 0 && (
-                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200">
-                          <h4 className="font-semibold text-sm mb-2 text-blue-900 flex items-center gap-2">
-                            <Icon name="Users" size={16} />
-                            Состав команды
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {participant.members.map((member, idx) => (
-                              <Badge key={idx} variant="secondary" className="bg-white/80 text-xs sm:text-sm">
-                                {member}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-2 bg-green-50 p-4 rounded-lg border border-green-200">
                           <div className="flex items-center gap-2 mb-3">
